@@ -53,9 +53,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="..\Share\Query\DbDef.cs">
-      <Link>Query\DbDef.cs</Link>
-    </Compile>
     <Compile Include="..\Share\Query\Select_CombineResult_Test.cs">
       <Link>Query\Select_CombineResult_Test.cs</Link>
     </Compile>
@@ -83,25 +80,16 @@
     <Compile Include="..\Share\Query\Select_WhereClause_Test.cs">
       <Link>Query\Select_WhereClause_Test.cs</Link>
     </Compile>
-    <Compile Include="ConfigProviderTest.cs" />
-    <Compile Include="Extensions\SqlSelectExprExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Symber.Data.SqlServer\Symber.Data.SqlServer.csproj">
-      <Project>{24559ae8-bc4b-4488-b63e-e7cd83b9d3ca}</Project>
-      <Name>Symber.Data.SqlServer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\Symber.Data\Symber.Data.csproj">
       <Project>{59ef6436-6a6a-4bb7-b296-21324dff6eeb}</Project>
       <Name>Symber.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Symber.Data.Tests.Helper\Symber.Data.Tests.Helper.csproj">
+    <ProjectReference Include="..\Symber.Data.Tests.Business\Symber.Data.Tests.Business.csproj">
       <Project>{8ac0c51f-78b6-4244-905c-628cd0ac2b81}</Project>
-      <Name>Symber.Data.Tests.Helper</Name>
+      <Name>Symber.Data.Tests.Business</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

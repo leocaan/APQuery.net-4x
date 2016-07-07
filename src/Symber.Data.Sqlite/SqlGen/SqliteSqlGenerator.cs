@@ -11,6 +11,9 @@ namespace Symber.Data.Sqlite.Query
 		#region [ Override Implementation of DefaultSqlGenerator ]
 
 
+		public override string ParameterPrefix => "$";
+
+
 		public override SqlExpr VisitGroupingSets(SqlMultipleGroupingSetsExprBase groupingSetsExpr)
 		{
 			throw new System.NotSupportedException(Strings.SqlSyntex_UotSupported_MultipleGroupingSets_Expr("Sqlite"));

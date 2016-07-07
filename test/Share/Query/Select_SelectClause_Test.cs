@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Symber.Data.Query;
 using Symber.Data.SqlSyntex;
+using Symber.Data.Tests.Business.DbDef;
 using System;
 
 namespace Symber.Data.Tests.Query

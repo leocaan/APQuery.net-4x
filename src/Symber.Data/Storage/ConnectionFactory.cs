@@ -2,6 +2,7 @@
 
 namespace Symber.Data.Storage
 {
+
 	public abstract class ConnectionFactory
 	{
 
@@ -13,4 +14,5 @@ namespace Symber.Data.Storage
 		public abstract DbConnection CreateConnection();
 
 	}
+
 }

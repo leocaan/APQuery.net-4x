@@ -163,7 +163,7 @@
     <Compile Include="Storage\DataStoreProvider.cs" />
     <Compile Include="Storage\DataStoreProviderFactory.cs" />
     <Compile Include="Storage\DataStoreServices.cs" />
-    <Compile Include="Storage\DataStoreServicesBuilder.cs" />
+    <Compile Include="Storage\DataStoreServicesManager.cs" />
     <Compile Include="Storage\SqlGenerator.cs" />
     <Compile Include="Storage\Test.cs" />
     <Compile Include="Utilities\IndentedStringBuilder.cs" />

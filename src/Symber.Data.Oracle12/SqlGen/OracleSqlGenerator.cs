@@ -12,6 +12,9 @@ namespace Symber.Data.Oracle12.Query
 		#region [ Override Implementation of DefaultSqlGenerator ]
 
 
+		public override string ParameterPrefix => ":";
+
+
 		public override SqlExpr VisitCombineResult(SqlCombineResultExprBase combineResultExpr)
 		{
 			Check.NotNull(combineResultExpr, nameof(combineResultExpr));

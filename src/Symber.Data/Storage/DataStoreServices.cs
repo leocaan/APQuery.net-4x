@@ -6,19 +6,6 @@ namespace Symber.Data.Storage
 	public class DataStoreServices
 	{
 
-		#region [ Fields ]
-
-
-		private DataStoreProvider _provider;
-		private SqlGenerator _queryParser;
-		private ConnectionFactory _connectionFactory;
-		private string _connectionString;
-		private string _providerName;
-
-
-		#endregion
-
-
 		#region [ Constructors ]
 
 
@@ -27,11 +14,11 @@ namespace Symber.Data.Storage
 			Check.NotNull(provider, nameof(provider));
 			Check.NotEmpty(providerName, nameof(providerName));
 
-			_provider = provider;
-			_queryParser = provider.GetQueryParser();
-			_connectionFactory = provider.GetConnectionFactory(providerName, connectionString);
-			_connectionString = connectionString;
-			_providerName = providerName;
+			Provider = provider;
+			Generator = provider.GetGenerator();
+			ConnectionFactory = provider.GetConnectionFactory(connectionString, providerName);
+			ConnectionString = connectionString;
+			ProviderName = providerName;
 		}
 
 
@@ -41,24 +28,19 @@ namespace Symber.Data.Storage
 		#region [ Properties ]
 
 
-		public DataStoreProvider Provider
-			=> _provider;
+		public DataStoreProvider Provider { get; }
 
 
-		public SqlGenerator QueryParser
-			=> _queryParser;
+		public SqlGenerator Generator { get; }
 
 
-		public ConnectionFactory ConnectionFactory
-			=> _connectionFactory;
+		public ConnectionFactory ConnectionFactory { get; }
 
 
-		public string ConnectionString
-			=> _connectionString;
+		public string ConnectionString { get; }
 
 
-		public string ProviderName
-			=> _providerName;
+		public string ProviderName { get; }
 
 
 		#endregion

@@ -1,13 +1,15 @@
-﻿using Symber.Data.Oracle.Query;
+﻿using Symber.Data.SqlGen;
 using System;
 
 namespace Symber.Data.SqlSyntex
 {
+
 	public static class SqlSelectExprExtensions
 	{
+
 		public static void print(this SqlSelectExpr query, string description = null)
 		{
-			var generator = new OracleSqlGenerator();
+			var generator = new DefaultSqlGenerator();
 
 
 			if (description != null)
@@ -28,5 +30,7 @@ namespace Symber.Data.SqlSyntex
 			Console.WriteLine();
 			Console.WriteLine();
 		}
+
 	}
+
 }

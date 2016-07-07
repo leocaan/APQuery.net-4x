@@ -50,9 +50,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="..\share\query\DbDef.cs">
-      <Link>Query\DbDef.cs</Link>
-    </Compile>
     <Compile Include="..\Share\Query\Select_CombineResult_Test.cs">
       <Link>Query\Select_CombineResult_Test.cs</Link>
     </Compile>
@@ -80,7 +77,7 @@
     <Compile Include="..\share\query\Select_WhereClause_Test.cs">
       <Link>Query\Select_WhereClause_Test.cs</Link>
     </Compile>
-    <Compile Include="Extensions\SqlSelectExprExtensions.cs" />
+    <Compile Include="ConfigProviderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -92,12 +89,14 @@
       <Project>{59ef6436-6a6a-4bb7-b296-21324dff6eeb}</Project>
       <Name>Symber.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Symber.Data.Tests.Helper\Symber.Data.Tests.Helper.csproj">
+    <ProjectReference Include="..\Symber.Data.Tests.Business\Symber.Data.Tests.Business.csproj">
       <Project>{8ac0c51f-78b6-4244-905c-628cd0ac2b81}</Project>
-      <Name>Symber.Data.Tests.Helper</Name>
+      <Name>Symber.Data.Tests.Business</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

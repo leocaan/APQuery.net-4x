@@ -48,7 +48,7 @@ namespace Symber.Data.SqlServer
 		}
 
 
-		public override SqlGenerator GetQueryParser()
+		public override SqlGenerator GetGenerator()
 		{
 			return new SqlServerSqlGenerator();
 		}

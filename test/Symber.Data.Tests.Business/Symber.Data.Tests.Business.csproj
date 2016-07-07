@@ -7,8 +7,8 @@
     <ProjectGuid>{8AC0C51F-78B6-4244-905C-628CD0AC2B81}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Symber.Data.Tests.Helper</RootNamespace>
-    <AssemblyName>Symber.Data.Tests.Helper</AssemblyName>
+    <RootNamespace>Symber.Data.Tests.Business</RootNamespace>
+    <AssemblyName>Symber.Data.Tests.Business</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Department.cs" />
-    <Compile Include="Models\Employee.cs" />
+    <Compile Include="DbDef\DbDef.cs" />
+    <Compile Include="Extensions\SqlSelectExprExtensions.cs" />
+    <Compile Include="DataDef\Department.cs" />
+    <Compile Include="DataDef\Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tables\DepartmentTableDef.cs" />
-    <Compile Include="Tables\EmployeeTableDef.cs" />
+    <Compile Include="DbDef\DepartmentTableDef.cs" />
+    <Compile Include="DbDef\EmployeeTableDef.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Symber.Data\Symber.Data.csproj">

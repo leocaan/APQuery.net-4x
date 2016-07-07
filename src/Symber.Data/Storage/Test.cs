@@ -3,13 +3,17 @@ using System.Configuration;
 
 namespace Symber.Data.Storage
 {
+
 	public class StorageTest
 	{
 		public static void TestServices()
 		{
-			var section = (APQuerySection)ConfigurationManager.GetSection("APQuery");
+			var s = DataStoreServicesManager.CreateServices();
 
-			var provider = new DataStoreProviderFactory().GetInstance(section.Providers[0].Type);
+			//var section = (APQuerySection)ConfigurationManager.GetSection("APQuery");
+
+			//var provider = new DataStoreProviderFactory().GetInstance(section.Providers[0].Type);
 		}
 	}
+
 }

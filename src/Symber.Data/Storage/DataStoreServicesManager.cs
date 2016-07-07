@@ -7,16 +7,26 @@ using System.Linq;
 
 namespace Symber.Data.Storage
 {
-	internal static class DataStoreServicesBuilder
+
+	internal static class DataStoreServicesManager
 	{
 
+		#region [ Fields ]
+
+
 		private static Dictionary<string, DataStoreProvider> providers;
-		private static Dictionary<string, ConnectionStringSettings> connectionStringSettings;
 		private static DataStoreProvider defaultProvider;
+		private static Dictionary<string, ConnectionStringSettings> connectionStringSettings;
 		private static Dictionary<string, DataStoreServices> servicesCache;
 
 
-		static DataStoreServicesBuilder()
+		#endregion
+
+
+		#region [ Constructors ]
+
+
+		static DataStoreServicesManager()
 		{
 			providers = new Dictionary<string, DataStoreProvider>();
 			connectionStringSettings = new Dictionary<string, ConnectionStringSettings>();
@@ -64,9 +74,23 @@ namespace Symber.Data.Storage
 		}
 
 
-		public static DataStoreServices CreateServices(string connectionStringName, string providerName)
+		#endregion
+
+
+		#region [ Methods ]
+
+
+		public static DataStoreServices CreateServices(string connectionStringName = null, string providerName = null)
 		{
-			Check.NotEmpty(connectionStringName, nameof(connectionStringName));
+			if (connectionStringName == null)
+			{
+				if (connectionStringSettings.Count == 0)
+				{
+					throw new DataStoreException(Strings.DataStore_ConnectionStringNotFound(connectionStringName));
+				}
+				connectionStringName = connectionStringSettings.First().Key;
+			}
+
 
 			if (servicesCache.ContainsKey(connectionStringName))
 				return servicesCache[connectionStringName];
@@ -85,7 +109,7 @@ namespace Symber.Data.Storage
 					throw new DataStoreException(Strings.Providers_NoDefaultProvider);
 				provider = defaultProvider;
 			}
-			else 
+			else
 			{
 				if (!providers.ContainsKey(providerName))
 					throw new DataStoreException(Strings.Providers_NoProviderFound(providerName));
@@ -93,7 +117,7 @@ namespace Symber.Data.Storage
 			}
 
 			var settings = connectionStringSettings[connectionStringName];
-			var services = new DataStoreServices(provider, settings.ProviderName, settings.ConnectionString);
+			var services = new DataStoreServices(provider, settings.ConnectionString, settings.ProviderName);
 
 
 			servicesCache.Add(connectionStringName, services);
@@ -102,5 +126,9 @@ namespace Symber.Data.Storage
 			return services;
 		}
 
+
+		#endregion
+
 	}
+
 }

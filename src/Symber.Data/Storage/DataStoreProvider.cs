@@ -19,7 +19,7 @@
 		#region [ Methods ]
 
 
-		public abstract SqlGenerator GetQueryParser();
+		public abstract SqlGenerator GetGenerator();
 
 
 		public abstract ConnectionFactory GetConnectionFactory(string connectionString, string providerName);

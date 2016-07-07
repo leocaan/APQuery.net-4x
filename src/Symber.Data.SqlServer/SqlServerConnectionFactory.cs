@@ -3,6 +3,7 @@ using System.Data.Common;
 
 namespace Symber.Data.SqlServer
 {
+
 	public class SqlServerConnectionFactory : ConnectionFactory
 	{
 
@@ -44,4 +45,5 @@ namespace Symber.Data.SqlServer
 		#endregion
 
 	}
+
 }
