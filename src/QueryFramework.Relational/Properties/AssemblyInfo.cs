@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Symber.Data")]
-[assembly: AssemblyDescription("APQuery.net is a lightweight, open source ORM framework.")]
+[assembly: AssemblyTitle("QueryFramework.Relational")]
+[assembly: AssemblyDescription("QueryFramework.Relational")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Symber")]
-[assembly: AssemblyProduct("Symber.Data")]
+[assembly: AssemblyCompany("QueryFramework")]
+[assembly: AssemblyProduct("QueryFramework.Relational")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

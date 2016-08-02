@@ -30,7 +30,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+	<PropertyGroup>
+		<AssemblyOriginatorKeyFile>..\Shared\QueryFramework.snk</AssemblyOriginatorKeyFile>
+	</PropertyGroup>
+	<ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -61,7 +67,13 @@
     <Compile Include="Utilities\TypeLoader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Shared\QueryFramework.snk">
+      <Link>Properties\QueryFramework.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Properties\Strings.resx">
+      <LogicalName>QueryFramework.Core.Strings.resources</LogicalName>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
@@ -71,11 +83,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Shared\Symber.Data.snk">
-      <Link>Properties\Symber.Data.snk</Link>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

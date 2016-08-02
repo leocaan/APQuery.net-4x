@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Symber.Data.MySql")]
-[assembly: AssemblyDescription("The MySql provider of the APQuery.net.")]
+[assembly: AssemblyTitle("QueryFramework.MySql")]
+[assembly: AssemblyDescription("QueryFramework.MySql")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Symber")]
-[assembly: AssemblyProduct("Symber.Data.MySql")]
+[assembly: AssemblyCompany("QueryFramework")]
+[assembly: AssemblyProduct("QueryFramework.MySql")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

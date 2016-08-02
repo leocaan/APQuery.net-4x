@@ -12,6 +12,30 @@ namespace QueryFramework.Sqlite
 		private static readonly ResourceManager _resourceManager
 			= new ResourceManager("QueryFramework.Sqlite.Strings", typeof(Strings).GetTypeInfo().Assembly);
 
+		/// <summary>
+		/// The provider '{providerName}' not supported combines results 'INTERSECT' and 'MINUS'.
+		/// </summary>
+		public static string SqlSyntex_NotSupported_CombineResult_Expr_Part(object providerName)
+		{
+			return string.Format(CultureInfo.CurrentCulture, GetString("SqlSyntex_NotSupported_CombineResult_Expr_Part", "providerName"), providerName);
+		}
+
+		/// <summary>
+		/// The provider '{providerName}' not supported '{funcName}' function.
+		/// </summary>
+		public static string SqlSyntex_NotSupported_Expr(object providerName, object funcName)
+		{
+			return string.Format(CultureInfo.CurrentCulture, GetString("SqlSyntex_NotSupported_Expr", "providerName", "funcName"), providerName, funcName);
+		}
+
+		/// <summary>
+		/// The provider '{providerName}' not supported multiple grouping sets 'ROLLUP', 'CUBE' and 'GROUPING SETS'.
+		/// </summary>
+		public static string SqlSyntex_NotSupported_MultipleGroupingSets_Expr(object providerName)
+		{
+			return string.Format(CultureInfo.CurrentCulture, GetString("SqlSyntex_NotSupported_MultipleGroupingSets_Expr", "providerName"), providerName);
+		}
+
 		private static string GetString(string name, params string[] formatterNames)
 		{
 			var value = _resourceManager.GetString(name);

@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("QueryFramework.Core")]
-[assembly: AssemblyDescription("Core of APQuery.net")]
+[assembly: AssemblyDescription("QueryFramework.Core")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Symber")]
+[assembly: AssemblyCompany("QueryFramework")]
 [assembly: AssemblyProduct("QueryFramework.Core")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]

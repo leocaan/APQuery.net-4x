@@ -3,7 +3,7 @@ using QueryFramework.Relational.SqlGen;
 using QueryFramework.Relational.SqlSyntex;
 using QueryFramework.Utilities;
 
-namespace QueryFramework.Relational.MySql.Query
+namespace QueryFramework.MySql.SqlGen
 {
 
 	public class MySqlSqlGenerator : DefaultSqlGenerator
@@ -17,14 +17,14 @@ namespace QueryFramework.Relational.MySql.Query
 
 		public override SqlExpr VisitGroupingSets(SqlMultipleGroupingSetsExprBase groupingSetsExpr)
 		{
-			throw new System.NotSupportedException(Strings.SqlSyntex_UotSupported_MultipleGroupingSets_Expr("MySql"));
+			throw new System.NotSupportedException(Strings.SqlSyntex_NotSupported_MultipleGroupingSets_Expr("MySql"));
 		}
 
 
 		public override SqlExpr VisitCombineResult(SqlCombineResultExprBase combineResultExpr)
 		{
 			if (combineResultExpr is SqlIntersectExpr || combineResultExpr is SqlExceptExpr)
-				throw new System.NotSupportedException(Strings.SqlSyntex_UotSupported_CombineResult_Expr_Part("MySql"));
+				throw new System.NotSupportedException(Strings.SqlSyntex_NotSupported_CombineResult_Expr_Part("MySql"));
 
 			return base.VisitCombineResult(combineResultExpr);
 		}

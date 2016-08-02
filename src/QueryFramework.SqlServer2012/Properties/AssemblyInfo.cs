@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Symber.Data.SqlServer2012")]
-[assembly: AssemblyDescription("The SqlServer2012 provider of the APQuery.net.")]
+[assembly: AssemblyTitle("QueryFramework.SqlServer2012")]
+[assembly: AssemblyDescription("QueryFramework.SqlServer2012")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Symber")]
-[assembly: AssemblyProduct("Symber.Data.SqlServer2012")]
+[assembly: AssemblyCompany("QueryFramework")]
+[assembly: AssemblyProduct("QueryFramework.SqlServer2012")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

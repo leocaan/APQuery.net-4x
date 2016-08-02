@@ -2,7 +2,7 @@
 using QueryFramework.Relational.SqlSyntex;
 using System.Linq;
 
-namespace Symber.Data.SqlServer.Query
+namespace QueryFramework.SqlServer.Query
 {
 
 	public class SqlServerSqlGenerator : DefaultSqlGenerator

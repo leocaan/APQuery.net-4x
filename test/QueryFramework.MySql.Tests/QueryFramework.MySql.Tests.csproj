@@ -81,6 +81,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\QueryFramework.Core\QueryFramework.Core.csproj">
+      <Project>{b5b84722-646e-4e8d-9ba6-bc6b165f6d1a}</Project>
+      <Name>QueryFramework.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\QueryFramework.MySql\QueryFramework.MySql.csproj">
       <Project>{fda4816e-1208-4f28-aeef-1d1c2094cf84}</Project>
       <Name>QueryFramework.MySql</Name>

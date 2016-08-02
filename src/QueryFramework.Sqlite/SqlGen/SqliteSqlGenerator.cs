@@ -3,7 +3,7 @@ using QueryFramework.Relational.SqlGen;
 using QueryFramework.Relational.SqlSyntex;
 using QueryFramework.Utilities;
 
-namespace Symber.Data.Sqlite.Query
+namespace QueryFramework.Sqlite.SqlGen
 {
 
 	public class SqliteSqlGenerator : DefaultSqlGenerator
@@ -17,14 +17,14 @@ namespace Symber.Data.Sqlite.Query
 
 		public override SqlExpr VisitGroupingSets(SqlMultipleGroupingSetsExprBase groupingSetsExpr)
 		{
-			throw new System.NotSupportedException(Strings.SqlSyntex_UotSupported_MultipleGroupingSets_Expr("Sqlite"));
+			throw new System.NotSupportedException(Strings.SqlSyntex_NotSupported_MultipleGroupingSets_Expr("Sqlite"));
 		}
 
 
 		public override SqlExpr VisitCombineResult(SqlCombineResultExprBase combineResultExpr)
 		{
 			if (combineResultExpr is SqlIntersectExpr || combineResultExpr is SqlExceptExpr)
-				throw new System.NotSupportedException(Strings.SqlSyntex_UotSupported_CombineResult_Expr_Part("Sqlite"));
+				throw new System.NotSupportedException(Strings.SqlSyntex_NotSupported_CombineResult_Expr_Part("Sqlite"));
 
 			return base.VisitCombineResult(combineResultExpr);
 		}

@@ -150,13 +150,4 @@
   <data name="Providers_NoDefaultProvider" xml:space="preserve">
     <value>No default provider found. Make sure the provider is registered in the 'APQuery' section of the application config file.</value>
   </data>
-  <data name="SqlSyntex_UotSupported_CombineResult_Expr_Part" xml:space="preserve">
-    <value>The provider '{providerName}' not supported combines results 'INTERSECT' and 'MINUS'.</value>
-  </data>
-  <data name="SqlSyntex_UotSupported_Expr" xml:space="preserve">
-    <value>The provider '{providerName}' not supported '{funcName}' function.</value>
-  </data>
-  <data name="SqlSyntex_UotSupported_MultipleGroupingSets_Expr" xml:space="preserve">
-    <value>The provider '{providerName}' not supported multiple grouping sets 'ROLLUP', 'CUBE' and 'GROUPING SETS'.</value>
-  </data>
 </root>

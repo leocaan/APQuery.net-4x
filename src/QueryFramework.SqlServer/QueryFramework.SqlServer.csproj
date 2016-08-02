@@ -34,7 +34,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\Shared\Symber.Data.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\Shared\QueryFramework.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -69,7 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Strings.resx">
-      <LogicalName>Symber.Data.SqlServer.Strings.resources</LogicalName>
+      <LogicalName>QueryFramework.SqlServer.Strings.resources</LogicalName>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
@@ -84,8 +84,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Shared\Symber.Data.snk">
-      <Link>Properties\Symber.Data.snk</Link>
+    <None Include="..\Shared\QueryFramework.snk">
+      <Link>Properties\QueryFramework.snk</Link>
     </None>
   </ItemGroup>
   <ItemGroup>

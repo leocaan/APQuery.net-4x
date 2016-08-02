@@ -90,6 +90,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\QueryFramework.Core\QueryFramework.Core.csproj">
+      <Project>{b5b84722-646e-4e8d-9ba6-bc6b165f6d1a}</Project>
+      <Name>QueryFramework.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\QueryFramework.Relational\QueryFramework.Relational.csproj">
       <Project>{59ef6436-6a6a-4bb7-b296-21324dff6eeb}</Project>
       <Name>QueryFramework.Relational</Name>

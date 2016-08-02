@@ -34,7 +34,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\Shared\Symber.Data.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\Shared\QueryFramework.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Strings.resx">
-      <LogicalName>Symber.Data.MySql.Strings.resources</LogicalName>
+      <LogicalName>QueryFramework.MySql.Strings.resources</LogicalName>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
@@ -76,8 +76,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Shared\Symber.Data.snk">
-      <Link>Properties\Symber.Data.snk</Link>
+    <None Include="..\Shared\QueryFramework.snk">
+      <Link>Properties\QueryFramework.snk</Link>
     </None>
   </ItemGroup>
   <ItemGroup>

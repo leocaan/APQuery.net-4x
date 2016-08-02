@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Symber.Data.Oracle")]
-[assembly: AssemblyDescription("The Oracle provider of the APQuery.net.")]
+[assembly: AssemblyTitle("QueryFramework.Oracle")]
+[assembly: AssemblyDescription("QueryFramework.Oracle.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Symber")]
-[assembly: AssemblyProduct("Symber.Data.Oracle")]
+[assembly: AssemblyCompany("QueryFramework")]
+[assembly: AssemblyProduct("QueryFramework.Oracle")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

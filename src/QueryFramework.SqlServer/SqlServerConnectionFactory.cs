@@ -1,14 +1,14 @@
-﻿//using Symber.Data.Storage;
+﻿//using QueryFramework.Relational.Storage;
 //using System.Data.Common;
 
-//namespace Symber.Data.SqlServer
+//namespace QueryFramework.SqlServer
 //{
 
 //	public class SqlServerConnectionFactory : ConnectionFactory
 //	{
 
 //		#region [ Fields ]
-		 
+
 
 //		private DbProviderFactory _factory = null;
 //		private string _connectionString;
