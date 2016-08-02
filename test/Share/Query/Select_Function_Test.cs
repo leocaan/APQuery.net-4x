@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Symber.Data.Query;
-using Symber.Data.SqlSyntex;
-using Symber.Data.Tests.Business.DbDef;
+using QueryFramework.Relational.Query;
+using QueryFramework.Relational.SqlSyntex;
+using QueryFramework.Relational.Business.DbDef;
 
-namespace Symber.Data.Tests.Query
+namespace QueryFramework.Tests.Query
 {
 	[TestClass]
 	public class Select_Function_Test
@@ -12,7 +12,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void RankingWindow_Func()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 
 
@@ -69,7 +69,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Aggregate_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			// avg
 
@@ -124,7 +124,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Aggregate_Over_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 
 			// avg
@@ -192,7 +192,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void DistinctableFunction_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			APQuery
 				.select(t.DepartmentId, SqlExpr.DistFunc("STDEV", t.DepartmentId).Distinct().As("stdev"))

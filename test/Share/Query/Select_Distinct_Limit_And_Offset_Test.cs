@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Symber.Data.Query;
-using Symber.Data.SqlSyntex;
-using Symber.Data.Tests.Business.DbDef;
+using QueryFramework.Relational.Query;
+using QueryFramework.Relational.SqlSyntex;
+using QueryFramework.Relational.Business.DbDef;
 
-namespace Symber.Data.Tests.Query
+namespace QueryFramework.Tests.Query
 {
 	[TestClass]
 	public class Select_Distinct_Limit_And_Offset_Test
@@ -12,7 +12,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Distinct()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			APQuery
 				.select(t.DepartmentId, t.DepartmentName)
@@ -24,7 +24,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Limit()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			APQuery
 				.select(t.ProjectStar)
@@ -37,7 +37,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Offset()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			APQuery
 				.select(t.ProjectStar)
@@ -49,7 +49,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Limit_Offset_Has_Order_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			APQuery
 				.select(t.DepartmentId, t.DepartmentName.As("name"), t.ParentId)
@@ -63,7 +63,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Limit_Offset_Not_Order_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			APQuery
 				.select(t.ProjectStar)

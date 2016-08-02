@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Symber.Data.Query;
-using Symber.Data.SqlSyntex;
-using Symber.Data.Tests.Business.DbDef;
+using QueryFramework.Relational.Query;
+using QueryFramework.Relational.SqlSyntex;
+using QueryFramework.Relational.Business.DbDef;
 
-namespace Symber.Data.Tests.Query
+namespace QueryFramework.Tests.Query
 {
 	[TestClass]
 	public class Select_GroupByClause_Test
@@ -12,7 +12,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Groupable_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			APQuery
 				.select(t.DepartmentId, t.DepartmentName)
@@ -24,7 +24,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Groupable_Expr_having()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			APQuery
 				.select(t.DepartmentId, t.DepartmentName)
@@ -37,7 +37,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Grouping_Func()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 
 			// Rollup

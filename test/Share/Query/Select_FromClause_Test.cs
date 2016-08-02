@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Symber.Data.Query;
-using Symber.Data.SqlSyntex;
-using Symber.Data.Tests.Business.DbDef;
+using QueryFramework.Relational.Query;
+using QueryFramework.Relational.SqlSyntex;
+using QueryFramework.Relational.Business.DbDef;
 
-namespace Symber.Data.Tests.Query
+namespace QueryFramework.Tests.Query
 {
 	[TestClass]
 	public class Select_FromClause_Test
@@ -12,7 +12,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Table_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			APQuery
 				.select(t.DepartmentId, t.ParentId, t.DepartmentName, t.CreateDate, t.CancelDate, t.State)
@@ -24,7 +24,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Table_Expr_Alias()
 		{
-			var t = DbDef.department.As<DepartmentTableDef>("t2");
+			var t = CrmDbDef.department.As<DepartmentTableDef>("t2");
 
 			APQuery
 				.select(t.DepartmentId, t.ParentId, t.DepartmentName, t.CreateDate, t.CancelDate, t.State)
@@ -36,8 +36,8 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void InnerJoin_Expr()
 		{
-			var t = DbDef.department;
-			var e = DbDef.employee;
+			var t = CrmDbDef.department;
+			var e = CrmDbDef.employee;
 
 			APQuery
 				.select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
@@ -49,8 +49,8 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void LeftJoin_Expr()
 		{
-			var t = DbDef.department;
-			var e = DbDef.employee;
+			var t = CrmDbDef.department;
+			var e = CrmDbDef.employee;
 
 			APQuery
 				.select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
@@ -63,8 +63,8 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void RightJoin_Expr()
 		{
-			var t = DbDef.department;
-			var e = DbDef.employee;
+			var t = CrmDbDef.department;
+			var e = CrmDbDef.employee;
 
 			APQuery
 				.select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
@@ -76,8 +76,8 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void FullJoin_Expr()
 		{
-			var t = DbDef.department;
-			var e = DbDef.employee;
+			var t = CrmDbDef.department;
+			var e = CrmDbDef.employee;
 
 			APQuery
 				.select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
@@ -89,8 +89,8 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void CrossJoin_Expr()
 		{
-			var t = DbDef.department;
-			var e = DbDef.employee;
+			var t = CrmDbDef.department;
+			var e = CrmDbDef.employee;
 
 			APQuery
 				.select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
@@ -102,7 +102,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Self_Join()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 			var t1 = t.As<DepartmentTableDef>("dp");
 
 			APQuery

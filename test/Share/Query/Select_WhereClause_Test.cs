@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Symber.Data.Query;
-using Symber.Data.SqlSyntex;
-using Symber.Data.Tests.Business.DbDef;
+using QueryFramework.Relational.Query;
+using QueryFramework.Relational.SqlSyntex;
+using QueryFramework.Relational.Business.DbDef;
 using System.Collections.Generic;
 
-namespace Symber.Data.Tests.Query
+namespace QueryFramework.Tests.Query
 {
 	[TestClass]
 	public class Select_WhereClause_Test
@@ -13,7 +13,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Comparison_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			// =
 
@@ -67,7 +67,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void IsNull_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			// IS NULL
 
@@ -90,7 +90,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void InExpr_ConstantExpr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			APQuery
 				.select(t.DepartmentId, t.DepartmentName)
@@ -116,7 +116,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void InExpr_ParameterExpr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			APQuery
 				.select(t.DepartmentId, t.DepartmentName)
@@ -145,7 +145,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Between_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			// BETWEEN begin AND end
 
@@ -168,7 +168,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Like_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			// LIKE
 
@@ -215,7 +215,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void AND_OR_NOT()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			// NOT
 

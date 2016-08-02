@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Symber.Data.Query;
-using Symber.Data.SqlSyntex;
-using Symber.Data.Tests.Business.DbDef;
+using QueryFramework.Relational.Query;
+using QueryFramework.Relational.SqlSyntex;
+using QueryFramework.Relational.Business.DbDef;
 
-namespace Symber.Data.Tests.Query
+namespace QueryFramework.Tests.Query
 {
 	[TestClass]
 	public class Select_SubQuery_Test
@@ -12,8 +12,8 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Exists_Expr()
 		{
-			var t = DbDef.department;
-			var e = DbDef.employee;
+			var t = CrmDbDef.department;
+			var e = CrmDbDef.employee;
 
 			// Sub query
 
@@ -43,8 +43,8 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void InSubQuery_Expr()
 		{
-			var t = DbDef.department;
-			var e = DbDef.employee;
+			var t = CrmDbDef.department;
+			var e = CrmDbDef.employee;
 
 			// Sub query
 
@@ -74,8 +74,8 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void ComparisonSubQuery_Expr()
 		{
-			var t = DbDef.department;
-			var e = DbDef.employee;
+			var t = CrmDbDef.department;
+			var e = CrmDbDef.employee;
 
 			// Sub query
 

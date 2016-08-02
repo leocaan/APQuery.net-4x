@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Symber.Data.Query;
-using Symber.Data.SqlSyntex;
-using Symber.Data.Tests.Business.DbDef;
+using QueryFramework.Relational.Query;
+using QueryFramework.Relational.SqlSyntex;
+using QueryFramework.Relational.Business.DbDef;
 using System;
 
-namespace Symber.Data.Tests.Query
+namespace QueryFramework.Tests.Query
 {
 	[TestClass]
 	public class Select_SelectClause_Test
@@ -13,7 +13,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Column_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			APQuery
 				.select(t.DepartmentId, t.ParentId, t.DepartmentName, t.CreateDate, t.CancelDate, t.State)
@@ -25,7 +25,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void ProjectStar_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			APQuery
 				.select(SqlExpr.Star)
@@ -42,7 +42,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Constant_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			// direct
 
@@ -85,7 +85,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Alias_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			APQuery
 				.select(t.DepartmentId.As("id"), t.ParentId.As("pid"), t.DepartmentName.As("name"))

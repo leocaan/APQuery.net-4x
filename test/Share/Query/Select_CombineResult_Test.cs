@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Symber.Data.Query;
-using Symber.Data.SqlSyntex;
-using Symber.Data.Tests.Business.DbDef;
+using QueryFramework.Relational.Query;
+using QueryFramework.Relational.SqlSyntex;
+using QueryFramework.Relational.Business.DbDef;
 
-namespace Symber.Data.Tests.Query
+namespace QueryFramework.Tests.Query
 {
 	[TestClass]
 	public class Select_CombineResult_Test
@@ -12,7 +12,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Union_All_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			var query1 = APQuery
 				.select(t.DepartmentId, t.DepartmentName)
@@ -47,7 +47,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Intersect_Minus_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			var query1 = APQuery
 				.select(t.DepartmentId, t.DepartmentName)
@@ -78,7 +78,7 @@ namespace Symber.Data.Tests.Query
 		[TestMethod]
 		public virtual void Recursive_Union_Expr()
 		{
-			var t = DbDef.department;
+			var t = CrmDbDef.department;
 
 			var query1 = APQuery
 				.select(t.DepartmentId, t.DepartmentName)
