@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
 
-namespace QueryFramework.Relational.Utilities
+namespace QueryFramework.Utilities
 {
 
 	internal static class MemberInfoExtensions
 	{
 
-		public static object GetValue(this MemberInfo memberInfo)
+		internal static object GetValue(this MemberInfo memberInfo)
 		{
 			Debug.Assert(memberInfo is PropertyInfo || memberInfo is FieldInfo);
 

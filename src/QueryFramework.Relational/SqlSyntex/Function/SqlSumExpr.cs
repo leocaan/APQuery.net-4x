@@ -1,5 +1,4 @@
-﻿using QueryFramework.Relational.SqlGen;
-using QueryFramework.Utilities;
+﻿using QueryFramework.Utilities;
 
 namespace QueryFramework.Relational.SqlSyntex
 {

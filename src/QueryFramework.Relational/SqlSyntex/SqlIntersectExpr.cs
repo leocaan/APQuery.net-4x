@@ -1,6 +1,4 @@
-﻿using QueryFramework.Relational.SqlGen;
-
-namespace QueryFramework.Relational.SqlSyntex
+﻿namespace QueryFramework.Relational.SqlSyntex
 {
 
 	public class SqlIntersectExpr : SqlCombineResultExprBase

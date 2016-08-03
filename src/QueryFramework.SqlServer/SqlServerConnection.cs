@@ -1,15 +1,11 @@
 ﻿using QueryFramework.Relational.Storage;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Common;
 
 namespace QueryFramework.Relational.SqlServer
 {
 
-	public class SqlServerConnection : IDataStoreConnection
+	public class SqlServerConnection : IRelationalConnection
 	{
 		public string ConnectionString
 		{
@@ -27,7 +23,7 @@ namespace QueryFramework.Relational.SqlServer
 			}
 		}
 
-		public DataStoreTranscation Transaction
+		public RelationalTranscation Transaction
 		{
 			get
 			{

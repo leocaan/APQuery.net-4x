@@ -1,5 +1,4 @@
-﻿using QueryFramework.Relational;
-using QueryFramework.Relational.SqlGen;
+﻿using QueryFramework.Relational.SqlGen;
 using QueryFramework.Relational.SqlSyntex;
 using QueryFramework.Utilities;
 

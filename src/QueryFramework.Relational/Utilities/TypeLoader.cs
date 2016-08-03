@@ -7,7 +7,7 @@ namespace QueryFramework.Utilities
 	internal class TypeLoader
 	{
 
-		public static Type LoadType(string typeName)
+		internal static Type LoadType(string typeName)
 		{
 			Check.NotEmpty(typeName, nameof(typeName));
 

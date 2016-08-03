@@ -83,15 +83,15 @@
     <Compile Include="DBStruct\StringColumnDef.cs" />
     <Compile Include="DBStruct\TableDef.cs" />
     <Compile Include="DBStruct\TimeSpanColumnDef.cs" />
-    <Compile Include="Storage\DataStoreException.cs" />
+    <Compile Include="IRelationalDataStoreServices.cs" />
+    <Compile Include="RelationalConnection.cs" />
+    <Compile Include="RelationalOptionsExtension.cs" />
     <Compile Include="Storage\DataStoreProvider.cs" />
     <Compile Include="Storage\DataStoreProviderFactory.cs" />
-    <Compile Include="Storage\DataStoreServices.cs" />
+    <Compile Include="RelationalDataStoreServices.cs" />
     <Compile Include="Storage\DataStoreServicesManager.cs" />
-    <Compile Include="Storage\DataStoreTranscation.cs" />
-    <Compile Include="Storage\IDataStoreConnection.cs" />
-    <Compile Include="Storage\ISqlGenerator.cs" />
-    <Compile Include="Storage\SqlGenerator.cs" />
+    <Compile Include="RelationalTranscation.cs" />
+    <Compile Include="IRelationalConnection.cs" />
     <Compile Include="Query\APQuery.cs" />
     <Compile Include="Query\SqlQuerySourceExprExtensions.cs" />
     <Compile Include="Query\SqlSelectExprExtensions.cs" />
@@ -101,7 +101,7 @@
     </Compile>
     <Compile Include="SqlGen\CommandParameter.cs" />
     <Compile Include="SqlGen\DefaultSqlGenerator.cs" />
-    <Compile Include="SqlGen\ISqlExprVisitor.cs" />
+    <Compile Include="SqlGen\ISqlGenerator.cs" />
     <Compile Include="SqlGen\SqlParameterNameGenerator.cs" />
     <Compile Include="SqlGen\SqlTableAliasGenerator.cs" />
     <Compile Include="SqlSyntex\Command\SqlDeleteCommand.cs" />
@@ -169,7 +169,6 @@
     <Compile Include="SqlSyntex\SqlTableExpr.cs" />
     <Compile Include="SqlSyntex\ISqlQuerySource.cs" />
     <Compile Include="Storage\Test.cs" />
-    <Compile Include="Utilities\IndentedStringBuilder.cs" />
     <Compile Include="Utilities\MemberInfoExtensions.cs" />
     <Compile Include="Utilities\PropertyInfoExtensions.cs" />
     <Compile Include="Utilities\TypeExtensions.cs" />

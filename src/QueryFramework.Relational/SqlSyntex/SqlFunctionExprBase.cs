@@ -1,10 +1,6 @@
 ﻿using QueryFramework.Relational.SqlGen;
 using QueryFramework.Utilities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QueryFramework.Relational.SqlSyntex
 {
@@ -89,7 +85,7 @@ namespace QueryFramework.Relational.SqlSyntex
 		#region [ Override Implementation of SqlExpr ]
 
 
-		public override SqlExpr Accept(ISqlExprVisitor visitor)
+		public override SqlExpr Accept(ISqlGenerator visitor)
 			=> visitor.VisitSqlFunction(this);
 
 

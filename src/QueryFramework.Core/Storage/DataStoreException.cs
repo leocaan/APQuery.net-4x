@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QueryFramework.Relational.Storage
+namespace QueryFramework.Storage
 {
 
 	public class DataStoreException : Exception

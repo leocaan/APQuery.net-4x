@@ -60,12 +60,11 @@
     <Compile Include="Properties\Strings.Designer.cs">
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-    <Compile Include="SqlGen\SqlServerSqlGenerator.cs" />
+    <Compile Include="SqlServerSqlGenerator.cs" />
     <Compile Include="SqlServerConnection.cs" />
     <Compile Include="SqlServerConnectionFactory.cs" />
     <Compile Include="SqlServerDataStoreProvider.cs" />
     <Compile Include="SqlServerDataStoreServices.cs" />
-    <Compile Include="SqlServerSqlGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Strings.resx">

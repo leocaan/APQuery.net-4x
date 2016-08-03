@@ -21,7 +21,7 @@ namespace QueryFramework.Relational.SqlSyntex
 		#region [ Override Implementation of SqlExpr ]
 
 
-		public override SqlExpr Accept(ISqlExprVisitor visitor)
+		public override SqlExpr Accept(ISqlGenerator visitor)
 			=> visitor.VisitLeftOuterJoin(this);
 
 

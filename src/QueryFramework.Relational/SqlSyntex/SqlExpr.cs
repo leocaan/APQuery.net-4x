@@ -589,7 +589,7 @@ namespace QueryFramework.Relational.SqlSyntex
 		#region [ Methods ]
 
 
-		public abstract SqlExpr Accept(ISqlExprVisitor visitor);
+		public abstract SqlExpr Accept(ISqlGenerator visitor);
 
 
 		#endregion

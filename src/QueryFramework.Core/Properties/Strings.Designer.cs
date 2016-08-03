@@ -13,6 +13,14 @@ namespace QueryFramework
 			= new ResourceManager("QueryFramework.Core.Strings", typeof(Strings).GetTypeInfo().Assembly);
 
 		/// <summary>
+		/// Options extension of type '{optionsExtension}' not found.
+		/// </summary>
+		public static string Options_ExtensionNotFound(object optionsExtension)
+		{
+			return string.Format(CultureInfo.CurrentCulture, GetString("Options_ExtensionNotFound", "optionsExtension"), optionsExtension);
+		}
+
+		/// <summary>
 		/// The string argument '{argumentName}' cannot be empty.
 		/// </summary>
 		public static string Utilities_ArgumentIsEmpty(object argumentName)

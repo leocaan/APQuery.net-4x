@@ -8,7 +8,7 @@ namespace QueryFramework.Utilities
 	internal static class TypeExtensions
 	{
 
-		public static PropertyInfo GetStaticProperty(this Type type, string name)
+		internal static PropertyInfo GetStaticProperty(this Type type, string name)
 		{
 			Check.NotNull(type, nameof(type));
 			Check.NotEmpty(name, nameof(name));

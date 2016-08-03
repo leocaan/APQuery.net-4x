@@ -1,14 +1,10 @@
-﻿using QueryFramework.Relational.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using QueryFramework.Relational.SqlGen;
+using QueryFramework.Relational.Storage;
 
 namespace QueryFramework.Relational.SqlServer
 {
 
-	public class SqlServerDataStoreServices : DataStoreServices
+	public class SqlServerDataStoreServices : RelationalDataStoreServices
 	{
 
 		#region [ Constructors ]
@@ -29,7 +25,7 @@ namespace QueryFramework.Relational.SqlServer
 		public override ISqlGenerator SqlGenerator => new SqlServerSqlGenerator();
 
 
-		public override IDataStoreConnection RelationalConnection => new SqlServerConnection();
+		public override IRelationalConnection RelationalConnection => new SqlServerConnection();
 
 
 		#endregion

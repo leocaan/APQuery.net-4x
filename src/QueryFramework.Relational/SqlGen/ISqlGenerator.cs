@@ -3,7 +3,7 @@
 namespace QueryFramework.Relational.SqlGen
 {
 
-	public interface ISqlExprVisitor
+	public interface ISqlGenerator
 	{
 
 		SqlExpr VisitSelect(SqlSelectExpr selectExpr);

@@ -1,5 +1,4 @@
 ﻿using QueryFramework.Relational.SqlSyntex;
-using QueryFramework.Relational.Utilities;
 using QueryFramework.Utilities;
 using System;
 using System.Collections.Generic;

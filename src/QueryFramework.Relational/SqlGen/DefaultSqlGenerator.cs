@@ -10,7 +10,7 @@ using System.Text;
 namespace QueryFramework.Relational.SqlGen
 {
 
-	public class DefaultSqlGenerator : ISqlExprVisitor
+	public class DefaultSqlGenerator : ISqlGenerator
 	{
 
 		#region [ Fields ]

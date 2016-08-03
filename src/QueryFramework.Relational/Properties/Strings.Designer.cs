@@ -101,27 +101,51 @@ namespace QueryFramework.Relational
 		}
 
 		/// <summary>
-		/// The provider '{providerName}' not supported combines results 'INTERSECT' and 'MINUS'.
+		/// The specified CommandTimeout value is not valid. It must be a positive number.
 		/// </summary>
-		public static string SqlSyntex_UotSupported_CombineResult_Expr_Part(object providerName)
+		public static string Connection_InvalidCommandTimeout
 		{
-			return string.Format(CultureInfo.CurrentCulture, GetString("SqlSyntex_UotSupported_CombineResult_Expr_Part", "providerName"), providerName);
+			get { return GetString("Connection_InvalidCommandTimeout"); }
 		}
 
 		/// <summary>
-		/// The provider '{providerName}' not supported '{funcName}' function.
+		/// The specified MaxBatchSize value is not valid. It must be a positive number.
 		/// </summary>
-		public static string SqlSyntex_UotSupported_Expr(object providerName, object funcName)
+		public static string Connection_InvalidMaxBatchSize
 		{
-			return string.Format(CultureInfo.CurrentCulture, GetString("SqlSyntex_UotSupported_Expr", "providerName", "funcName"), providerName, funcName);
+			get { return GetString("Connection_InvalidMaxBatchSize"); }
 		}
 
 		/// <summary>
-		/// The provider '{providerName}' not supported multiple grouping sets 'ROLLUP', 'CUBE' and 'GROUPING SETS'.
+		/// Multiple relational data store configurations found. A context can only be configured to use a single data store.
 		/// </summary>
-		public static string SqlSyntex_UotSupported_MultipleGroupingSets_Expr(object providerName)
+		public static string Connection_MultipleDataStoresConfigured
 		{
-			return string.Format(CultureInfo.CurrentCulture, GetString("SqlSyntex_UotSupported_MultipleGroupingSets_Expr", "providerName"), providerName);
+			get { return GetString("Connection_MultipleDataStoresConfigured"); }
+		}
+
+		/// <summary>
+		/// No relational data stores are configured. Configure a data store using OnConfiguring or by creating an ImmutableDbContextOptions with a data store configured and passing it to the context.
+		/// </summary>
+		public static string Connection_NoDataStoreConfigured
+		{
+			get { return GetString("Connection_NoDataStoreConfigured"); }
+		}
+
+		/// <summary>
+		/// Both an existing DbConnection and a connection string have been configured. When an existing DbConnection is used the connection string must be set on that connection.
+		/// </summary>
+		public static string Connection_ConnectionAndConnectionString
+		{
+			get { return GetString("Connection_ConnectionAndConnectionString"); }
+		}
+
+		/// <summary>
+		/// A relational store has been configured without specifying either the DbConnection or connection string to use.
+		/// </summary>
+		public static string Connection_NoConnectionOrConnectionString
+		{
+			get { return GetString("Connection_NoConnectionOrConnectionString"); }
 		}
 
 		private static string GetString(string name, params string[] formatterNames)

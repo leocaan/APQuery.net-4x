@@ -1,8 +1,4 @@
 ﻿using QueryFramework.Relational.Storage;
-using QueryFramework.Utilities;
-using System;
-using System.Data.Common;
-using System.Data.SqlClient;
 
 namespace QueryFramework.Relational.SqlServer
 {
@@ -26,7 +22,7 @@ namespace QueryFramework.Relational.SqlServer
 		#region [ Override Implementation of DataStoreProvider ]
 
 
-		public override DataStoreServices CreateServices(string connectionString, string factoryName)
+		public override RelationalDataStoreServices CreateServices(string connectionString, string factoryName)
 		{
 			return new SqlServerDataStoreServices(connectionString, factoryName);
 		}

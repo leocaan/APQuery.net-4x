@@ -1,6 +1,4 @@
-﻿using QueryFramework.Relational;
-using QueryFramework.Utilities;
-using QueryFramework.Relational.Utilities;
+﻿using QueryFramework.Utilities;
 using System;
 using System.Reflection;
 

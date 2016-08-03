@@ -1,6 +1,5 @@
 ﻿using QueryFramework.Relational.Configuration;
-using QueryFramework.Relational;
-using QueryFramework.Utilities;
+using QueryFramework.Storage;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -81,7 +80,7 @@ namespace QueryFramework.Relational.Storage
 		#region [ Methods ]
 
 
-		public static DataStoreServices CreateServices(string nameOrConnectionString = null, string providerName = null)
+		public static RelationalDataStoreServices CreateServices(string nameOrConnectionString = null, string providerName = null)
 		{
 			string name = null;
 			string connectionString = null;

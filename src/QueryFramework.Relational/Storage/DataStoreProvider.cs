@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace QueryFramework.Relational.Storage
+﻿namespace QueryFramework.Relational.Storage
 {
 
 	public abstract class DataStoreProvider
@@ -9,7 +7,7 @@ namespace QueryFramework.Relational.Storage
 		#region [ Methods ]
 
 
-		public abstract DataStoreServices CreateServices(string connectionString, string factoryName);
+		public abstract RelationalDataStoreServices CreateServices(string connectionString, string factoryName);
 
 
 		#endregion
