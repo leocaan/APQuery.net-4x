@@ -1,12 +1,8 @@
 ﻿using QueryFramework.Infrastructure;
 using QueryFramework.Utilities;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QueryFramework.Relational
 {
@@ -30,7 +26,7 @@ namespace QueryFramework.Relational
 		#region [ Constructors ]
 
 
-		protected RelationalConnection(IQueryOptions options)
+		protected RelationalConnection(IDataStoreOptions options)
 		{
 			Check.NotNull(options, nameof(options));
 

@@ -1,6 +1,7 @@
-﻿using QueryFramework.Relational.Storage;
+﻿using QueryFramework.Relational;
+using QueryFramework.Relational.Storage;
 
-namespace QueryFramework.Relational.SqlServer
+namespace QueryFramework.SqlServer
 {
 
 	public class SqlServerDataStoreProvider : DataStoreProvider
@@ -24,7 +25,7 @@ namespace QueryFramework.Relational.SqlServer
 
 		public override RelationalDataStoreServices CreateServices(string connectionString, string factoryName)
 		{
-			return new SqlServerDataStoreServices(connectionString, factoryName);
+			return new SqlServerDataStoreServices(null);
 		}
 
 		//public override ConnectionFactory GetConnectionFactory(string connectionString, string providerName)

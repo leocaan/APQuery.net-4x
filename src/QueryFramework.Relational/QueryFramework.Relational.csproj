@@ -86,6 +86,7 @@
     <Compile Include="IRelationalDataStoreServices.cs" />
     <Compile Include="RelationalConnection.cs" />
     <Compile Include="RelationalOptionsExtension.cs" />
+    <Compile Include="RelationalOptionsBuilder.cs" />
     <Compile Include="Storage\DataStoreProvider.cs" />
     <Compile Include="Storage\DataStoreProviderFactory.cs" />
     <Compile Include="RelationalDataStoreServices.cs" />

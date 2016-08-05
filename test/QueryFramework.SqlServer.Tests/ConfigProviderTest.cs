@@ -1,8 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using QueryFramework;
 using QueryFramework.Relational.Storage;
-using System.Reflection;
-using System.Resources;
 
 namespace QueryFramework.SqlServer.Tests
 {
@@ -14,6 +11,24 @@ namespace QueryFramework.SqlServer.Tests
 		[TestMethod]
 		public void LunchProvider()
 		{
+			var opts = new DataStoreOptions<DbContext>();
+			var builder = new DataStoreOptionsBuilder(opts);
+
+			var sqlbuilder = builder
+				.UseSqlServer("abc")
+				.MaxBatchSize(10);
+
+			var services = new SqlServerDataStoreServices(builder.Options);
+			var conn = services.RelationalConnection;
+
+			//QueryOptionsBuilder baseBuilder = new QueryOptionsBuilder(new QueryOptions<SqlServerOptionsExtension>());
+
+			//SqlServerQueryOptionsBuilder builder = new SqlServerQueryOptionsBuilder(baseBuilder);
+			//builder
+			//	.MaxBatchSize(10)
+			//	.CommandTimeout(10);
+
+
 			//var type = typeof(Strings);
 			//var rns = type.Assembly.GetManifestResourceNames();
 

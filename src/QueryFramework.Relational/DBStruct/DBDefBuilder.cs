@@ -1,5 +1,4 @@
-﻿using QueryFramework.Relational.Storage;
-using QueryFramework.Storage;
+﻿using QueryFramework.Storage;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

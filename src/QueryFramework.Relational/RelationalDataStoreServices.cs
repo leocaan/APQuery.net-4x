@@ -1,7 +1,6 @@
 ﻿using QueryFramework.Infrastructure;
 using QueryFramework.Relational.SqlGen;
 using QueryFramework.Storage;
-using QueryFramework.Utilities;
 
 namespace QueryFramework.Relational
 {
@@ -12,7 +11,7 @@ namespace QueryFramework.Relational
 		#region [ Constructors ]
 
 
-		protected RelationalDataStoreServices(IQueryOptions options)
+		protected RelationalDataStoreServices(IDataStoreOptions options)
 			: base(options)
 		{
 		}
@@ -28,6 +27,10 @@ namespace QueryFramework.Relational
 
 
 		public abstract IRelationalConnection RelationalConnection { get; }
+
+
+		public override IDataStoreConnection Connection
+			=> RelationalConnection;
 
 
 		#endregion

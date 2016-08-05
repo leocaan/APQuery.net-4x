@@ -56,14 +56,18 @@
     <Compile Include="..\shared\Check.cs">
       <Link>Utilities\Check.cs</Link>
     </Compile>
-    <Compile Include="Infrastructure\IQueryOptions.cs" />
-    <Compile Include="Infrastructure\IQueryOptionsExtension.cs" />
-    <Compile Include="Infrastructure\QueryOptions.cs" />
-    <Compile Include="Infrastructure\QueryOptions`.cs" />
+    <Compile Include="DbContext.cs" />
+    <Compile Include="Infrastructure\IDataStoreOptionsBuilderExtender.cs" />
+    <Compile Include="Infrastructure\IDataStoreOptions.cs" />
+    <Compile Include="Infrastructure\IDataStoreOptionsExtension.cs" />
+    <Compile Include="DataStoreOptions.cs" />
+    <Compile Include="DataStoreOptionsBuilder`.cs" />
+    <Compile Include="DataStoreOptions`.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Strings.Designer.cs">
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="DataStoreOptionsBuilder.cs" />
     <Compile Include="Storage\DataStoreException.cs" />
     <Compile Include="Storage\DataStoreServices.cs" />
     <Compile Include="Storage\DataStoreTranscation.cs" />

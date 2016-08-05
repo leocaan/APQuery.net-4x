@@ -1,10 +1,5 @@
 ﻿using QueryFramework.Infrastructure;
 using QueryFramework.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QueryFramework.Storage
 {
@@ -15,7 +10,7 @@ namespace QueryFramework.Storage
 		#region [ Constructors ]
 
 
-		protected DataStoreServices(IQueryOptions options)
+		protected DataStoreServices(IDataStoreOptions options)
 		{
 			Check.NotNull(options, nameof(options));
 		}

@@ -1,17 +1,42 @@
 ﻿using QueryFramework.Infrastructure;
 using QueryFramework.Utilities;
 using System;
-using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QueryFramework.Relational
 {
 
-	public abstract class RelationalOptionsExtension : IQueryOptionsExtension
+	public abstract class RelationalOptionsExtension : IDataStoreOptionsExtension
 	{
+
+		#region [ Static Methods ]
+
+
+		public static RelationalOptionsExtension Extract(IDataStoreOptions options)
+		{
+			Check.NotNull(options, nameof(options));
+
+			var storeConfigs = options.Extensions
+				 .OfType<RelationalOptionsExtension>()
+				 .ToArray();
+
+			if (storeConfigs.Length == 0)
+			{
+				throw new InvalidOperationException(Strings.Connection_NoDataStoreConfigured);
+			}
+
+			if (storeConfigs.Length > 1)
+			{
+				throw new InvalidOperationException(Strings.Connection_MultipleDataStoresConfigured);
+			}
+
+			return storeConfigs[0];
+		}
+
+
+		#endregion
+
 
 		#region [ Fields ]
 
@@ -104,34 +129,6 @@ namespace QueryFramework.Relational
 
 				_maxBatchSize = value;
 			}
-		}
-
-
-		#endregion
-
-
-		#region [ Methods ]
-
-
-		public static RelationalOptionsExtension Extract(IQueryOptions options)
-		{
-			Check.NotNull(options, nameof(options));
-
-			var storeConfigs = options.Extensions
-				 .OfType<RelationalOptionsExtension>()
-				 .ToArray();
-
-			if (storeConfigs.Length == 0)
-			{
-				throw new InvalidOperationException(Strings.Connection_NoDataStoreConfigured);
-			}
-
-			if (storeConfigs.Length > 1)
-			{
-				throw new InvalidOperationException(Strings.Connection_MultipleDataStoresConfigured);
-			}
-
-			return storeConfigs[0];
 		}
 
 

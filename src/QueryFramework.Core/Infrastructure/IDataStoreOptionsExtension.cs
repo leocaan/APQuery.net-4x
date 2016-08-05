@@ -1,7 +1,7 @@
 ﻿namespace QueryFramework.Infrastructure
 {
 
-	public interface IQueryOptionsExtension
+	public interface IDataStoreOptionsExtension
 	{
 	}
 

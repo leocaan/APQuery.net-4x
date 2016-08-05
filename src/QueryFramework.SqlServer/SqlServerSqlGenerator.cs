@@ -2,7 +2,7 @@
 using QueryFramework.Relational.SqlSyntex;
 using System.Linq;
 
-namespace QueryFramework.Relational.SqlServer
+namespace QueryFramework.SqlServer
 {
 
 	public class SqlServerSqlGenerator : DefaultSqlGenerator

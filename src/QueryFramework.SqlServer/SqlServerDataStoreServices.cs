@@ -1,18 +1,29 @@
-﻿using QueryFramework.Relational.SqlGen;
-using QueryFramework.Relational.Storage;
+﻿using QueryFramework.Infrastructure;
+using QueryFramework.Relational;
+using QueryFramework.Relational.SqlGen;
 
-namespace QueryFramework.Relational.SqlServer
+namespace QueryFramework.SqlServer
 {
 
 	public class SqlServerDataStoreServices : RelationalDataStoreServices
 	{
 
+		#region [ Fields ]
+
+
+		private IDataStoreOptions _options;
+
+
+		#endregion
+
+
 		#region [ Constructors ]
 
 
-		public SqlServerDataStoreServices(string connectionString, string factoryName)
-			: base(connectionString, factoryName)
+		public SqlServerDataStoreServices(IDataStoreOptions options)
+			: base(options)
 		{
+			_options = options;
 		}
 
 
@@ -22,10 +33,12 @@ namespace QueryFramework.Relational.SqlServer
 		#region [ Properties ]
 
 
-		public override ISqlGenerator SqlGenerator => new SqlServerSqlGenerator();
+		public override ISqlGenerator SqlGenerator
+			=> new SqlServerSqlGenerator();
 
 
-		public override IRelationalConnection RelationalConnection => new SqlServerConnection();
+		public override IRelationalConnection RelationalConnection
+			=> new SqlServerConnection(_options);
 
 
 		#endregion

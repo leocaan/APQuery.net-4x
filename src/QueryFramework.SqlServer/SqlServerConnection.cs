@@ -1,40 +1,36 @@
-﻿using QueryFramework.Relational.Storage;
-using System;
+﻿using QueryFramework.Infrastructure;
+using QueryFramework.Relational;
 using System.Data.Common;
+using System.Data.SqlClient;
 
-namespace QueryFramework.Relational.SqlServer
+namespace QueryFramework.SqlServer
 {
 
-	public class SqlServerConnection : IRelationalConnection
+	public class SqlServerConnection : RelationalConnection
 	{
-		public string ConnectionString
+
+		#region [ Constructors ]
+
+
+		public SqlServerConnection(IDataStoreOptions options)
+			: base(options)
 		{
-			get
-			{
-				throw new NotImplementedException();
-			}
+
 		}
 
-		public DbConnection DbConnection
-		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-		}
 
-		public RelationalTranscation Transaction
-		{
-			get
-			{
-				throw new NotImplementedException();
-			}
-		}
+		#endregion
 
-		public void Dispose()
-		{
-			throw new NotImplementedException();
-		}
+
+		#region [ Methods ]
+
+
+		protected override DbConnection CreateDbConnection()
+			=> new SqlConnection(ConnectionString);
+
+
+		#endregion
+
 	}
 
 }

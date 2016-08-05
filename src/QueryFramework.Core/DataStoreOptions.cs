@@ -1,17 +1,18 @@
-﻿using QueryFramework.Utilities;
+﻿using QueryFramework.Infrastructure;
+using QueryFramework.Utilities;
 using System;
 using System.Collections.Generic;
 
-namespace QueryFramework.Infrastructure
+namespace QueryFramework
 {
 
-	public abstract class QueryOptions : IQueryOptions
+	public abstract class DataStoreOptions : IDataStoreOptions
 	{
 
 		#region [ Fields ]
 
 
-		private readonly IReadOnlyDictionary<Type, IQueryOptionsExtension> _extensions;
+		private readonly IReadOnlyDictionary<Type, IDataStoreOptionsExtension> _extensions;
 
 
 		#endregion
@@ -20,7 +21,7 @@ namespace QueryFramework.Infrastructure
 		#region [ Constructors ]
 
 
-		protected QueryOptions(IReadOnlyDictionary<Type, IQueryOptionsExtension> extensions)
+		protected DataStoreOptions(IReadOnlyDictionary<Type, IDataStoreOptionsExtension> extensions)
 		{
 			Check.NotNull(extensions, nameof(extensions));
 
@@ -34,7 +35,7 @@ namespace QueryFramework.Infrastructure
 		#region [ Properties ]
 
 
-		public virtual IEnumerable<IQueryOptionsExtension> Extensions
+		public virtual IEnumerable<IDataStoreOptionsExtension> Extensions
 			=> _extensions.Values;
 
 
@@ -45,16 +46,16 @@ namespace QueryFramework.Infrastructure
 
 
 		public virtual TExtension FindExtension<TExtension>()
-			where TExtension : class, IQueryOptionsExtension
+			where TExtension : class, IDataStoreOptionsExtension
 		{
-			IQueryOptionsExtension extension;
+			IDataStoreOptionsExtension extension;
 
 			return _extensions.TryGetValue(typeof(TExtension), out extension) ? (TExtension)extension : null;
 		}
 
 
 		public virtual TExtension GetExtension<TExtension>()
-			where TExtension : class, IQueryOptionsExtension
+			where TExtension : class, IDataStoreOptionsExtension
 		{
 			var extension = FindExtension<TExtension>();
 
@@ -67,8 +68,8 @@ namespace QueryFramework.Infrastructure
 		}
 
 
-		public abstract QueryOptions WithExtension<TExtension>(TExtension extension)
-			where TExtension : class, IQueryOptionsExtension;
+		public abstract DataStoreOptions WithExtension<TExtension>(TExtension extension)
+			where TExtension : class, IDataStoreOptionsExtension;
 
 
 		#endregion
