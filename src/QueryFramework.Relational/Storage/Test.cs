@@ -8,7 +8,7 @@
 		{
 
 
-			//var s = DataStoreServicesManager.CreateServices();
+			var s = DataStoreServicesManager.CreateServices();
 
 			//var conn = s.ConnectionFactory.CreateConnection();
 			//var cmd = conn.CreateCommand();

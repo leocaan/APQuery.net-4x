@@ -31,7 +31,7 @@ namespace QueryFramework.Relational.Storage
 			connectionStringSettings = new Dictionary<string, ConnectionStringSettings>();
 
 
-			var section = (APQuerySection)ConfigurationManager.GetSection("APQuery");
+			var section = (QueryFrameworkSection)ConfigurationManager.GetSection("queryFramework");
 
 
 			DataStoreProviderFactory factory = new DataStoreProviderFactory();
@@ -92,7 +92,7 @@ namespace QueryFramework.Relational.Storage
 
 			if (nameOrConnectionString != null)
 			{
-				if (nameOrConnectionString.StartsWith("name="))
+				if (nameOrConnectionString.StartsWith("name=", StringComparison.InvariantCulture))
 				{
 					name = nameOrConnectionString.Substring(5);
 				}
@@ -115,7 +115,7 @@ namespace QueryFramework.Relational.Storage
 				}
 				else if (connectionStringSettings.Count > 0)
 				{
-						settings = connectionStringSettings.First().Value;
+					settings = connectionStringSettings.First().Value;
 				}
 
 				if (settings != null)

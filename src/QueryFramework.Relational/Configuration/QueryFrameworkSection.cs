@@ -4,7 +4,7 @@ using System.Configuration;
 namespace QueryFramework.Relational.Configuration
 {
 
-	internal class APQuerySection : ConfigurationSection
+	internal class QueryFrameworkSection : ConfigurationSection
 	{
 
 		#region [ Static Fields ]
@@ -23,7 +23,7 @@ namespace QueryFramework.Relational.Configuration
 		#region [ Constructor ]
 
 
-		static APQuerySection()
+		static QueryFrameworkSection()
 		{
 			defaultProviderProp = new ConfigurationProperty(
 				defaultProviderKey,
@@ -51,7 +51,7 @@ namespace QueryFramework.Relational.Configuration
 
 		[TypeConverter(typeof(WhiteSpaceTrimStringConverter))]
 		[StringValidator(MinLength = 1)]
-		[ConfigurationProperty(defaultProviderKey, DefaultValue = "SqlAPDalProvider")]
+		[ConfigurationProperty(defaultProviderKey, DefaultValue = "SqlServer")]
 		public string DefaultProvider
 		{
 			get { return (string)base[defaultProviderProp]; }

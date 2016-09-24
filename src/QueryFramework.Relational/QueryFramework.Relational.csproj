@@ -57,7 +57,7 @@
     <Compile Include="..\Shared\Check.cs">
       <Link>Utilities\Check.cs</Link>
     </Compile>
-    <Compile Include="Configuration\APQuerySection.cs" />
+    <Compile Include="Configuration\QueryFrameworkSection.cs" />
     <Compile Include="Configuration\PropertyHelper.cs" />
     <Compile Include="Configuration\ProviderCollection.cs" />
     <Compile Include="Configuration\ProviderElement.cs" />

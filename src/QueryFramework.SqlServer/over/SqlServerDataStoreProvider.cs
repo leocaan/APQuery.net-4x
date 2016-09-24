@@ -1,4 +1,5 @@
-﻿using QueryFramework.Relational;
+﻿using QueryFramework.Infrastructure;
+using QueryFramework.Relational;
 using QueryFramework.Relational.Storage;
 
 namespace QueryFramework.SqlServer
@@ -23,9 +24,13 @@ namespace QueryFramework.SqlServer
 		#region [ Override Implementation of DataStoreProvider ]
 
 
-		public override RelationalDataStoreServices CreateServices(string connectionString, string factoryName)
+		public override RelationalDataStoreServices CreateServices(string connectionString, string providerName)
 		{
-			return new SqlServerDataStoreServices(null);
+			var builder = new DataStoreOptionsBuilder();
+
+			builder.UseSqlServer(connectionString);
+
+			return new SqlServerDataStoreServices(builder.Options);
 		}
 
 		//public override ConnectionFactory GetConnectionFactory(string connectionString, string providerName)

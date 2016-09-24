@@ -4,6 +4,7 @@ using System.Configuration;
 
 namespace QueryFramework.Relational.Configuration
 {
+
 	internal static class PropertyHelper
 	{
 
@@ -39,5 +40,6 @@ namespace QueryFramework.Relational.Configuration
 			IntFromOneToMax_1Validator = new IntegerValidator(1, Int32.MaxValue - 1);
 
 	}
+
 }
 

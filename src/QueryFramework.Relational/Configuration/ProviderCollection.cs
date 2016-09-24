@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace QueryFramework.Relational.Configuration
 {
+
 	[ConfigurationCollection(typeof(ProviderElement), CollectionType = ConfigurationElementCollectionType.AddRemoveClearMap)]
 	internal class ProviderCollection : ConfigurationElementCollection
 	{
@@ -82,4 +83,5 @@ namespace QueryFramework.Relational.Configuration
 		#endregion
 
 	}
+
 }
