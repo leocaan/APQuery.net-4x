@@ -1,77 +1,76 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using QueryFramework.Relational.Query;
-using QueryFramework.Relational.SqlSyntex;
-using QueryFramework.Relational.Business.DbDef;
+﻿#if Test_SqlSyntex
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using QueryFramework.Business.DbDef;
+using QueryFramework.Query;
+using QueryFramework.Query.SqlSyntex;
 
 namespace QueryFramework.Tests.Query
 {
-	[TestClass]
-	public class Select_Distinct_Limit_And_Offset_Test
-	{
 
-		[TestMethod]
-		public virtual void Distinct()
-		{
-			var t = CrmDbDef.department;
+   [TestClass]
+   public class Select_Distinct_Limit_And_Offset_Test
+   {
 
-			APQuery
-				.select(t.DepartmentId, t.DepartmentName)
-				.from(t)
-				.distinct()
-				.print("SELECT DISTINCT ...");
-		}
+      [TestMethod]
+      public virtual void Distinct()
+      {
+         var t = CrmDbDef.department;
 
-		[TestMethod]
-		public virtual void Limit()
-		{
-			var t = CrmDbDef.department;
+         APQuery
+            .select(t.DepartmentId, t.DepartmentName)
+            .from(t)
+            .distinct()
+            .print("SELECT DISTINCT ...");
+      }
 
-			APQuery
-				.select(t.ProjectStar)
-				.from(t)
-				.where(t.ParentId != null)
-				.take(10)
-				.print("SELECT TOP 10 ...");
-		}
 
-		[TestMethod]
-		public virtual void Offset()
-		{
-			var t = CrmDbDef.department;
+      [TestMethod]
+      public virtual void Limit_Offset()
+      {
+         var t = CrmDbDef.department;
 
-			APQuery
-				.select(t.ProjectStar)
-				.from(t)
-				.skip(100)
-				.print("SELECT ... OFFSET {rownum} ROWS");
-		}
 
-		[TestMethod]
-		public virtual void Limit_Offset_Has_Order_Expr()
-		{
-			var t = CrmDbDef.department;
+         // limit
 
-			APQuery
-				.select(t.DepartmentId, t.DepartmentName.As("name"), t.ParentId)
-				.from(t)
-				.order_by(t.DepartmentId.Desc, t.DepartmentName.As("name").Desc)
-				.skip(100)
-				.take(10)
-				.print("SELECT ... ORDER BY ... OFFSET {rownum} ROWS FETCH NEXT {rownum} ROWS ONLY");
-		}
+         APQuery
+            .select(t.ProjectStar)
+            .from(t)
+            .where(t.ParentId != null)
+            .take(10)
+            .print("Only limit");
 
-		[TestMethod]
-		public virtual void Limit_Offset_Not_Order_Expr()
-		{
-			var t = CrmDbDef.department;
 
-			APQuery
-				.select(t.ProjectStar)
-				.from(t)
-				.skip(100)
-				.take(10)
-				.print("SELECT ... Order by @@ROWCOUNT OFFSET {rownum} ROWS FETCH NEXT {rownum} ROWS ONLY");
-		}
+         // offset
 
-	}
+         APQuery
+           .select(t.ProjectStar)
+           .from(t)
+           .skip(100)
+           .print("Only Offset");
+
+
+         // limit and offset with ordery
+
+         APQuery
+            .select(t.DepartmentId, t.DepartmentName.As("name"), t.ParentId)
+            .from(t)
+            .order_by(t.DepartmentId.Desc, t.DepartmentName.As("name").Desc)
+            .skip(100)
+            .take(10)
+            .print("limit and offset with order");
+
+
+         // limit and offset without ordery
+
+         APQuery
+            .select(t.ProjectStar)
+            .from(t)
+            .skip(100)
+            .take(10)
+            .print("limit and offset without order");
+      }
+
+   }
+
 }
+#endif

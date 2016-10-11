@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 namespace QueryFramework.SqlServer
 {
 
-	public class SqlServerConnection : RelationalConnection
+	public class SqlServerConnection : RelationalConnection, ISqlServerConnection
 	{
 
 		#region [ Constructors ]
@@ -15,8 +15,17 @@ namespace QueryFramework.SqlServer
 		public SqlServerConnection(IDataStoreOptions options)
 			: base(options)
 		{
-
 		}
+
+
+		#endregion
+
+
+		#region [ Properties ]
+
+
+		public override bool IsMultipleActiveResultSetsEnabled
+		 => new SqlConnectionStringBuilder(ConnectionString).MultipleActiveResultSets;
 
 
 		#endregion
@@ -27,6 +36,27 @@ namespace QueryFramework.SqlServer
 
 		protected override DbConnection CreateDbConnection()
 			=> new SqlConnection(ConnectionString);
+
+
+		public virtual ISqlServerConnection CreateMasterConnection()
+		{
+			var builder = new SqlConnectionStringBuilder
+			{
+				ConnectionString = ConnectionString,
+				InitialCatalog = "master"
+			};
+
+
+			// TODO use clone connection method once implimented see #1406
+
+			var optionsBuilder = new DataStoreOptionsBuilder();
+			optionsBuilder
+				.UseSqlServer(builder.ConnectionString)
+				.CommandTimeout(CommandTimeout);
+
+			return new SqlServerConnection(optionsBuilder.Options);
+		}
+
 
 
 		#endregion

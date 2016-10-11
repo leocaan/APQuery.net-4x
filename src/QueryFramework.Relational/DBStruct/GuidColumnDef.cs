@@ -1,29 +1,32 @@
-﻿using System;
+﻿// Copyright (c) APQuery.NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+using System;
 using System.Linq.Expressions;
 
-namespace QueryFramework.Relational.DBStruct
+namespace QueryFramework.DBStruct
 {
 
-	public class GuidColumnDef<TModel> : IdentifiableColumnDef<TModel>
-	{
+   public class GuidColumnDef<TModel> : IdentifiableColumnDef<TModel>
+   {
 
-		#region [ Constructors ]
-
-
-		public GuidColumnDef(Expression<Func<TModel, Guid>> expression)
-		{
-			ResolveColumnInfo(expression);
-		}
+      #region [ Constructors ]
 
 
-		public GuidColumnDef(Expression<Func<TModel, Guid?>> expression)
-		{
-			ResolveColumnInfo(expression);
-		}
+      public GuidColumnDef(Expression<Func<TModel, Guid>> expression)
+      {
+         ResolveColumnInfo(expression);
+      }
 
 
-		#endregion
+      public GuidColumnDef(Expression<Func<TModel, Guid?>> expression)
+      {
+         ResolveColumnInfo(expression);
+      }
 
-	}
+
+      #endregion
+
+   }
 
 }

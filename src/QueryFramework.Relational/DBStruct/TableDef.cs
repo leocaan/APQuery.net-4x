@@ -1,63 +1,67 @@
-﻿using QueryFramework.Relational.SqlSyntex;
+﻿// Copyright (c) APQuery.NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+using QueryFramework.Query.SqlSyntex;
 using System;
 using System.Collections.ObjectModel;
 
-namespace QueryFramework.Relational.DBStruct
+namespace QueryFramework.DBStruct
 {
 
-	public abstract class TableDef<TModel> : SqlTableExpr, ISqlQuerySource
-	{
+   public abstract class TableDef<TModel> : SqlTableExpr, ISqlQuerySource
+   {
 
-		#region [ Constructors ]
-
-
-		protected TableDef(string schema, string name, string alias)
-			: base(null, schema, name, alias)
-		{
-			QuerySource = this;
-
-			DefBuilder.BuildTable(this);
-		}
+      #region [ Constructors ]
 
 
-		#endregion
+      protected TableDef(string schema, string name, string alias)
+         : base(null, schema, name, alias)
+      {
+         QuerySource = this;
+
+         DefBuilder.BuildTable(this);
+      }
 
 
-		#region [ Properties ]
+      #endregion
 
 
-		public ReadOnlyDictionary<string, ColumnDef<TModel>> Columns { get; internal set; }
+      #region [ Properties ]
 
 
-		#endregion
+      public ReadOnlyDictionary<string, ColumnDef<TModel>> Columns { get; internal set; }
 
 
-		#region [ Methods ]
+      #endregion
 
 
-		public T As<T>(string aliasName) where T : TableDef<TModel>
-		{
-			T aliasTable = Activator.CreateInstance(this.GetType()) as T;
-
-			aliasTable.Alias = aliasName;
-
-			return aliasTable;
-		}
+      #region [ Methods ]
 
 
-		#endregion
+      public T As<T>(string aliasName) where T : TableDef<TModel>
+      {
+         T aliasTable = Activator.CreateInstance(this.GetType()) as T;
+
+         aliasTable.Alias = aliasName;
 
 
-		#region [ About Expr ]
+         return aliasTable;
+      }
 
 
-		public SqlProjectStarExpr ProjectStar
-			=> new SqlProjectStarExpr(this);
+      #endregion
 
 
-		#endregion
+      #region [ About Expr ]
 
 
-	}
+      public SqlProjectStarExpr ProjectStar
+         => new SqlProjectStarExpr(this);
+
+
+      #endregion
+
+
+   }
 
 }

@@ -1,114 +1,143 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using QueryFramework.Relational.Query;
-using QueryFramework.Relational.SqlSyntex;
-using QueryFramework.Relational.Business.DbDef;
+﻿#if Test_SqlSyntex
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using QueryFramework.Business.DbDef;
+using QueryFramework.Query;
+using QueryFramework.Query.SqlSyntex;
 
 namespace QueryFramework.Tests.Query
 {
-	[TestClass]
-	public class Select_SubQuery_Test
-	{
 
-		[TestMethod]
-		public virtual void Exists_Expr()
-		{
-			var t = CrmDbDef.department;
-			var e = CrmDbDef.employee;
+   [TestClass]
+   public class Select_SubQuery_Test
+   {
 
-			// Sub query
+      [TestMethod]
+      public virtual void Exists_Expr()
+      {
+         var t = CrmDbDef.department;
+         var e = CrmDbDef.employee;
 
-			var subQuery = APQuery
-				.select(t.ProjectStar)
-				.from(t)
-				.where(t.DepartmentId == e.DepartmentId & e.Lastname == "Johnson");
+         // Sub query
 
-			// Exist
+         var subQuery = APQuery
+            .select(t.ProjectStar)
+            .from(t)
+            .where(t.DepartmentId == e.DepartmentId & e.Lastname == "Johnson");
 
-			APQuery
-				.select(e.EmployeeId, e.Firstname, e.Lastname)
-				.from(e)
-				.where(SqlExpr.Exists(subQuery))
-				.print("WHERE EXIST (subquery)");
+         // Exist
 
-			// Exist
+         APQuery
+            .select(e.EmployeeId, e.Firstname, e.Lastname)
+            .from(e)
+            .where(SqlExpr.Exists(subQuery))
+            .print("WHERE EXIST (subquery)");
 
-			APQuery
-				.select(e.EmployeeId, e.Firstname, e.Lastname)
-				.from(e)
-				.where(SqlExpr.NotExists(subQuery))
-				.print("WHERE NOT EXIST (subquery)");
+         // Exist
 
-		}
+         APQuery
+            .select(e.EmployeeId, e.Firstname, e.Lastname)
+            .from(e)
+            .where(SqlExpr.NotExists(subQuery))
+            .print("WHERE NOT EXIST (subquery)");
 
-		[TestMethod]
-		public virtual void InSubQuery_Expr()
-		{
-			var t = CrmDbDef.department;
-			var e = CrmDbDef.employee;
+      }
 
-			// Sub query
 
-			var subQuery = APQuery
-				.select(e.Lastname)
-				.from(t)
-				.where(t.DepartmentId == e.DepartmentId & e.Lastname == "Johnson");
+      [TestMethod]
+      public virtual void InSubQuery_Expr()
+      {
+         var t = CrmDbDef.department;
+         var e = CrmDbDef.employee;
 
-			// Exist
+         // Sub query
 
-			APQuery
-				.select(e.EmployeeId, e.Firstname, e.Lastname)
-				.from(e)
-				.where(SqlExpr.In(e.Lastname, subQuery))
-				.print("WHERE column_name IN (subquery)");
+         var subQuery = APQuery
+            .select(e.Lastname)
+            .from(t)
+            .where(t.DepartmentId == e.DepartmentId & e.Lastname == "Johnson");
 
-			// Exist
+         // Exist
 
-			APQuery
-				.select(e.EmployeeId, e.Firstname, e.Lastname)
-				.from(e)
-				.where(e.Lastname.NotIn(subQuery))
-				.print("WHERE column_name NOT IN (subquery)");
+         APQuery
+            .select(e.EmployeeId, e.Firstname, e.Lastname)
+            .from(e)
+            .where(SqlExpr.In(e.Lastname, subQuery))
+            .print("WHERE column_name IN (subquery)");
 
-		}
+         // Exist
 
-		[TestMethod]
-		public virtual void ComparisonSubQuery_Expr()
-		{
-			var t = CrmDbDef.department;
-			var e = CrmDbDef.employee;
+         APQuery
+            .select(e.EmployeeId, e.Firstname, e.Lastname)
+            .from(e)
+            .where(e.Lastname.NotIn(subQuery))
+            .print("WHERE column_name NOT IN (subquery)");
 
-			// Sub query
+      }
 
-			var subQuery = APQuery
-				.select(e.Lastname)
-				.from(t)
-				.where(t.DepartmentId == e.DepartmentId & e.Lastname == "Johnson");
 
-			// ANY
+      [TestMethod]
+      public virtual void ComparisonSubQuery_Expr()
+      {
+         var t = CrmDbDef.department;
+         var e = CrmDbDef.employee;
 
-			APQuery
-				.select(e.EmployeeId, e.Firstname, e.Lastname)
-				.from(e)
-				.where(t.DepartmentId == SqlExpr.Any(subQuery))
-				.print("WHERE column_name = ANY (subquery)");
+         // Sub query
 
-			// ALL
+         var subQuery = APQuery
+            .select(e.Lastname)
+            .from(t)
+            .where(t.DepartmentId == e.DepartmentId & e.Lastname == "Johnson");
 
-			APQuery
-				.select(e.EmployeeId, e.Firstname, e.Lastname)
-				.from(e)
-				.where(t.DepartmentId >= SqlExpr.All(subQuery))
-				.print("WHERE column_name >= ALL (subquery)");
+         // ANY
 
-			// None
+         APQuery
+            .select(e.EmployeeId, e.Firstname, e.Lastname)
+            .from(e)
+            .where(t.DepartmentId == SqlExpr.Any(subQuery))
+            .print("WHERE column_name = ANY (subquery)");
 
-			APQuery
-				.select(e.EmployeeId, e.Firstname, e.Lastname)
-				.from(e)
-				.where(t.DepartmentName == subQuery)
-				.print("WHERE column_name == (subquery)");
+         // ALL
 
-		}
+         APQuery
+            .select(e.EmployeeId, e.Firstname, e.Lastname)
+            .from(e)
+            .where(t.DepartmentId >= SqlExpr.All(subQuery))
+            .print("WHERE column_name >= ALL (subquery)");
 
-	}
+         // None
+
+         APQuery
+            .select(e.EmployeeId, e.Firstname, e.Lastname)
+            .from(e)
+            .where(t.DepartmentName == subQuery)
+            .print("WHERE column_name == (subquery)");
+
+      }
+
+
+      [TestMethod]
+      public virtual void FromSubQuery_Expr()
+      {
+         var t = CrmDbDef.department;
+         var e = CrmDbDef.employee;
+
+         // Todo: 
+         // Sub query
+
+         var subQuery = APQuery
+            .select(e.EmployeeId, e.DepartmentId, e.Lastname)
+            .from(t);
+
+         // ANY
+
+         APQuery
+            .select(t.DepartmentId)
+            .from(t)
+            .crossJoin(subQuery);
+
+      }
+
+   }
+
 }
+#endif

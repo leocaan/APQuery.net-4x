@@ -1,17 +1,20 @@
-﻿namespace QueryFramework.Relational.DBStruct
+﻿// Copyright (c) APQuery.NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+namespace QueryFramework.DBStruct
 {
 
-	public enum ColumnIdentityType
-	{
+   public enum ColumnIdentityType
+   {
 
-		None,
-
-
-		Provider,
+      None,
 
 
-		Database,
+      Provider,
 
-	}
+
+      Database,
+
+   }
 
 }

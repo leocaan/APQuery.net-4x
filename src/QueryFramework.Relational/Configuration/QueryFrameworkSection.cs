@@ -1,79 +1,83 @@
-﻿using System.ComponentModel;
+﻿// Copyright (c) APQuery.NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+using System.ComponentModel;
 using System.Configuration;
 
 namespace QueryFramework.Relational.Configuration
 {
 
-	internal class QueryFrameworkSection : ConfigurationSection
-	{
+   internal class QueryFrameworkSection : ConfigurationSection
+   {
 
-		#region [ Static Fields ]
-
-		private const string defaultProviderKey = "defaultProvider";
-		private const string providersKey = "providers";
-
-		private static ConfigurationProperty defaultProviderProp;
-		private static ConfigurationProperty providersProp;
-		private static ConfigurationPropertyCollection properties;
+      #region [ Static Fields ]
 
 
-		#endregion
+      private const string defaultProviderKey = "defaultProvider";
+      private const string providersKey = "providers";
+
+      private static ConfigurationProperty defaultProviderProp;
+      private static ConfigurationProperty providersProp;
+      private static ConfigurationPropertyCollection properties;
 
 
-		#region [ Constructor ]
+      #endregion
 
 
-		static QueryFrameworkSection()
-		{
-			defaultProviderProp = new ConfigurationProperty(
-				defaultProviderKey,
-				typeof(string),
-				null,
-				PropertyHelper.WhiteSpaceTrimStringConverter,
-				PropertyHelper.NonEmptyStringValidator,
-				ConfigurationPropertyOptions.None);
-			providersProp = new ConfigurationProperty(
-				providersKey,
-				typeof(ProviderCollection),
-				null);
-
-			properties = new ConfigurationPropertyCollection();
-			properties.Add(defaultProviderProp);
-			properties.Add(providersProp);
-		}
+      #region [ Constructor ]
 
 
-		#endregion
+      static QueryFrameworkSection()
+      {
+         defaultProviderProp = new ConfigurationProperty(
+            defaultProviderKey,
+            typeof(string),
+            null,
+            PropertyHelper.WhiteSpaceTrimStringConverter,
+            PropertyHelper.NonEmptyStringValidator,
+            ConfigurationPropertyOptions.None);
+         providersProp = new ConfigurationProperty(
+            providersKey,
+            typeof(ProviderCollection),
+            null);
+
+         properties = new ConfigurationPropertyCollection();
+         properties.Add(defaultProviderProp);
+         properties.Add(providersProp);
+      }
 
 
-		#region [ Properties ]
+      #endregion
 
 
-		[TypeConverter(typeof(WhiteSpaceTrimStringConverter))]
-		[StringValidator(MinLength = 1)]
-		[ConfigurationProperty(defaultProviderKey, DefaultValue = "SqlServer")]
-		public string DefaultProvider
-		{
-			get { return (string)base[defaultProviderProp]; }
-			set { base[defaultProviderProp] = value; }
-		}
+      #region [ Properties ]
 
 
-		[ConfigurationProperty(providersKey)]
-		public ProviderCollection Providers
-		{
-			get { return (ProviderCollection)base[providersProp]; }
-		}
+      [TypeConverter(typeof(WhiteSpaceTrimStringConverter))]
+      [StringValidator(MinLength = 1)]
+      [ConfigurationProperty(defaultProviderKey, DefaultValue = "SqlServer")]
+      public string DefaultProvider
+      {
+         get { return (string)base[defaultProviderProp]; }
+         set { base[defaultProviderProp] = value; }
+      }
 
 
-		protected override ConfigurationPropertyCollection Properties
-		{
-			get { return properties; }
-		}
+      [ConfigurationProperty(providersKey)]
+      public ProviderCollection Providers
+      {
+         get { return (ProviderCollection)base[providersProp]; }
+      }
 
 
-		#endregion
+      protected override ConfigurationPropertyCollection Properties
+      {
+         get { return properties; }
+      }
 
-	}
+
+      #endregion
+
+   }
 
 }

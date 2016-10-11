@@ -47,6 +47,19 @@ namespace QueryFramework.SqlServer
 		}
 
 
+		public virtual SqlServerOptionsBuilder SuppressAmbientTransactionWarning()
+		{
+			var extension = new SqlServerOptionsExtension(OptionsBuilder.Options.GetExtension<SqlServerOptionsExtension>())
+			{
+				ThrowOnAmbientTransaction = false
+			};
+
+			((IDataStoreOptionsBuilderExtender)OptionsBuilder).AddOrUpdateExtension(extension);
+
+			return this;
+		}
+
+
 		#endregion
 
 	}

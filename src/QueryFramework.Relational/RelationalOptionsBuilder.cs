@@ -1,33 +1,37 @@
-﻿using QueryFramework.Utilities;
+﻿// Copyright (c) APQuery.NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+using QueryFramework.Utilities;
 
 namespace QueryFramework.Relational
 {
 
-	public class RelationalOptionsBuilder
-	{
+   public class RelationalOptionsBuilder
+   {
 
-		#region [ Constructors ]
-
-
-		public RelationalOptionsBuilder(DataStoreOptionsBuilder optionsBuilder)
-		{
-			Check.NotNull(optionsBuilder, nameof(optionsBuilder));
-
-			OptionsBuilder = optionsBuilder;
-		}
+      #region [ Constructors ]
 
 
-		#endregion
+      public RelationalOptionsBuilder(DataStoreOptionsBuilder optionsBuilder)
+      {
+         Check.NotNull(optionsBuilder, nameof(optionsBuilder));
 
 
-		#region [ Properties ]
+         OptionsBuilder = optionsBuilder;
+      }
 
 
-		protected DataStoreOptionsBuilder OptionsBuilder { get; }
+      #endregion
 
 
-		#endregion
+      #region [ Properties ]
 
-	}
+
+      protected DataStoreOptionsBuilder OptionsBuilder { get; }
+
+
+      #endregion
+
+   }
 
 }

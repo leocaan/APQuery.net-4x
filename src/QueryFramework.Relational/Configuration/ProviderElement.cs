@@ -1,86 +1,89 @@
-﻿using System.ComponentModel;
+﻿// Copyright (c) APQuery.NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+using System.ComponentModel;
 using System.Configuration;
 
 namespace QueryFramework.Relational.Configuration
 {
 
-	internal class ProviderElement : ConfigurationElement
-	{
+   internal class ProviderElement : ConfigurationElement
+   {
 
-		#region [ Static Fields ]
-
-
-		private const string nameKey = "name";
-		private const string typeKey = "type";
-
-		private static ConfigurationProperty nameProp;
-		private static ConfigurationProperty typeProp;
-		private static ConfigurationPropertyCollection properties;
+      #region [ Static Fields ]
 
 
-		#endregion
+      private const string nameKey = "name";
+      private const string typeKey = "type";
+
+      private static ConfigurationProperty nameProp;
+      private static ConfigurationProperty typeProp;
+      private static ConfigurationPropertyCollection properties;
 
 
-		#region [ Constructor ]
+      #endregion
 
 
-		static ProviderElement()
-		{
-			nameProp = new ConfigurationProperty(
-				nameKey,
-				typeof(string),
-				null,
-				PropertyHelper.WhiteSpaceTrimStringConverter,
-				PropertyHelper.NonEmptyStringValidator,
-				ConfigurationPropertyOptions.IsKey | ConfigurationPropertyOptions.IsRequired);
-			typeProp = new ConfigurationProperty(
-				typeKey,
-				typeof(string),
-				null,
-				PropertyHelper.StringConverter,
-				PropertyHelper.NonEmptyStringValidator,
-				ConfigurationPropertyOptions.IsRequired);
-
-			properties = new ConfigurationPropertyCollection();
-			properties.Add(nameProp);
-			properties.Add(typeProp);
-		}
+      #region [ Constructor ]
 
 
-		#endregion
+      static ProviderElement()
+      {
+         nameProp = new ConfigurationProperty(
+            nameKey,
+            typeof(string),
+            null,
+            PropertyHelper.WhiteSpaceTrimStringConverter,
+            PropertyHelper.NonEmptyStringValidator,
+            ConfigurationPropertyOptions.IsKey | ConfigurationPropertyOptions.IsRequired);
+         typeProp = new ConfigurationProperty(
+            typeKey,
+            typeof(string),
+            null,
+            PropertyHelper.StringConverter,
+            PropertyHelper.NonEmptyStringValidator,
+            ConfigurationPropertyOptions.IsRequired);
+
+         properties = new ConfigurationPropertyCollection();
+         properties.Add(nameProp);
+         properties.Add(typeProp);
+      }
 
 
-		#region [ Properties ]
+      #endregion
 
 
-		[TypeConverter(typeof(WhiteSpaceTrimStringConverter))]
-		[StringValidator(MinLength = 1)]
-		[ConfigurationProperty(nameKey)]
-		public string Name
-		{
-			get { return (string)base[nameProp]; }
-			set { base[nameProp] = value; }
-		}
+      #region [ Properties ]
 
 
-		[TypeConverter(typeof(StringConverter))]
-		[StringValidator(MinLength = 1)]
-		[ConfigurationProperty(typeKey)]
-		public string Type
-		{
-			get { return (string)base[typeProp]; }
-			set { base[typeProp] = value; }
-		}
+      [TypeConverter(typeof(WhiteSpaceTrimStringConverter))]
+      [StringValidator(MinLength = 1)]
+      [ConfigurationProperty(nameKey)]
+      public string Name
+      {
+         get { return (string)base[nameProp]; }
+         set { base[nameProp] = value; }
+      }
 
 
-		protected override ConfigurationPropertyCollection Properties
-		{
-			get { return properties; }
-		}
+      [TypeConverter(typeof(StringConverter))]
+      [StringValidator(MinLength = 1)]
+      [ConfigurationProperty(typeKey)]
+      public string Type
+      {
+         get { return (string)base[typeProp]; }
+         set { base[typeProp] = value; }
+      }
 
 
-		#endregion
+      protected override ConfigurationPropertyCollection Properties
+      {
+         get { return properties; }
+      }
 
-	}
+
+      #endregion
+
+   }
 
 }

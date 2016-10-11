@@ -78,6 +78,7 @@
     <Compile Include="..\share\query\Select_WhereClause_Test.cs">
       <Link>Query\Select_WhereClause_Test.cs</Link>
     </Compile>
+    <Compile Include="Extensions\SqlSelectExprExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -89,9 +90,9 @@
       <Project>{59ef6436-6a6a-4bb7-b296-21324dff6eeb}</Project>
       <Name>QueryFramework.Relational</Name>
     </ProjectReference>
-    <ProjectReference Include="..\QueryFramework.Relational.Business\QueryFramework.Relational.Business.csproj">
+    <ProjectReference Include="..\QueryFramework.Business\QueryFramework.Business.csproj">
       <Project>{8ac0c51f-78b6-4244-905c-628cd0ac2b81}</Project>
-      <Name>QueryFramework.Relational.Business</Name>
+      <Name>QueryFramework.Business</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

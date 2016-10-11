@@ -7,7 +7,7 @@
     <ProjectGuid>{DA231FBC-CFF6-4BE8-A36B-0FA1CBF5B353}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QueryFramework.SqlServer2012</RootNamespace>
+    <RootNamespace>QueryFramework</RootNamespace>
     <AssemblyName>QueryFramework.SqlServer2012</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -57,10 +57,10 @@
       <Link>Utilities\Check.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Strings.Designer.cs">
-      <DependentUpon>Strings.resx</DependentUpon>
+    <Compile Include="Properties\SqlServerStrings.Designer.cs">
+      <DependentUpon>SqlServerStrings.resx</DependentUpon>
     </Compile>
-    <Compile Include="SqlGen\SqlServerSqlGenerator.cs" />
+    <Compile Include="Query\Sql\SqlServer2012SqlGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Shared\QueryFramework.snk">
@@ -68,9 +68,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Strings.resx">
-      <LogicalName>QueryFramework.SqlServer2012.Strings.resources</LogicalName>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Properties\SqlServerStrings.resx">
+      <LogicalName>QueryFramework.SqlServer.Properties.SqlServerStrings.resources</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -78,19 +77,24 @@
       <Link>Properties\Resources.tt</Link>
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.cs</LastGenOutput>
+      <CustomToolNamespace>QueryFramework.Internal</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QueryFramework.Core\QueryFramework.Core.csproj">
-      <Project>{b5b84722-646e-4e8d-9ba6-bc6b165f6d1a}</Project>
-      <Name>QueryFramework.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\QueryFramework.Relational\QueryFramework.Relational.csproj">
       <Project>{59ef6436-6a6a-4bb7-b296-21324dff6eeb}</Project>
       <Name>QueryFramework.Relational</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QueryFramework.SqlServer\QueryFramework.SqlServer.csproj">
+      <Project>{24559ae8-bc4b-4488-b63e-e7cd83b9d3ca}</Project>
+      <Name>QueryFramework.SqlServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QueryFramework\QueryFramework.csproj">
+      <Project>{b5b84722-646e-4e8d-9ba6-bc6b165f6d1a}</Project>
+      <Name>QueryFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

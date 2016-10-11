@@ -7,7 +7,7 @@
     <ProjectGuid>{24559AE8-BC4B-4488-B63E-E7CD83B9D3CA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QueryFramework.SqlServer</RootNamespace>
+    <RootNamespace>QueryFramework</RootNamespace>
     <AssemblyName>QueryFramework.SqlServer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -56,23 +56,31 @@
     <Compile Include="..\Shared\Check.cs">
       <Link>Utilities\Check.cs</Link>
     </Compile>
+    <Compile Include="..\Shared\PropertyInfoExtensions.cs">
+      <Link>Utilities\PropertyInfoExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\SharedTypeExtensions.cs">
+      <Link>Utilities\SharedTypeExtensions.cs</Link>
+    </Compile>
     <Compile Include="Extensions\SqlServerOptionsExtensions.cs" />
+    <Compile Include="ISqlServerConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Strings.Designer.cs">
-      <DependentUpon>Strings.resx</DependentUpon>
+    <Compile Include="Properties\SqlServerStrings.Designer.cs">
+      <DependentUpon>SqlServerStrings.resx</DependentUpon>
     </Compile>
     <Compile Include="SqlServerOptionsExtension.cs" />
     <Compile Include="SqlServerOptionsBuilder.cs" />
-    <Compile Include="SqlServerSqlGenerator.cs" />
+    <Compile Include="Query\Sql\SqlServerSqlGenerator.cs" />
     <Compile Include="SqlServerConnection.cs" />
-    <Compile Include="over\SqlServerConnectionFactory.cs" />
-    <Compile Include="over\SqlServerDataStoreProvider.cs" />
+    <Compile Include="SqlServerDataStoreProvider.cs" />
     <Compile Include="SqlServerDataStoreServices.cs" />
+    <Compile Include="Storage\Internal\SqlServerMaxLengthMapping.cs" />
+    <Compile Include="Storage\Internal\SqlServerSqlGenerationHelper.cs" />
+    <Compile Include="Storage\Internal\SqlServerTypeMapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Strings.resx">
-      <LogicalName>QueryFramework.SqlServer.Strings.resources</LogicalName>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Properties\SqlServerStrings.resx">
+      <LogicalName>QueryFramework.SqlServer.Properties.SqlServerStrings.resources</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +88,7 @@
       <Link>Properties\Resources.tt</Link>
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.cs</LastGenOutput>
+      <CustomToolNamespace>QueryFramework.Internal</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -91,13 +100,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QueryFramework.Core\QueryFramework.Core.csproj">
-      <Project>{b5b84722-646e-4e8d-9ba6-bc6b165f6d1a}</Project>
-      <Name>QueryFramework.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\QueryFramework.Relational\QueryFramework.Relational.csproj">
       <Project>{59ef6436-6a6a-4bb7-b296-21324dff6eeb}</Project>
       <Name>QueryFramework.Relational</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QueryFramework\QueryFramework.csproj">
+      <Project>{b5b84722-646e-4e8d-9ba6-bc6b165f6d1a}</Project>
+      <Name>QueryFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

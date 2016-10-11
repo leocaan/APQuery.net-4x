@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;Test_SqlSyntex</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -87,13 +87,10 @@
       <Link>Query\Select_WhereClause_Test.cs</Link>
     </Compile>
     <Compile Include="ConfigProviderTest.cs" />
+    <Compile Include="Extensions\SqlSelectExprExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\QueryFramework.Core\QueryFramework.Core.csproj">
-      <Project>{b5b84722-646e-4e8d-9ba6-bc6b165f6d1a}</Project>
-      <Name>QueryFramework.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\QueryFramework.Relational\QueryFramework.Relational.csproj">
       <Project>{59ef6436-6a6a-4bb7-b296-21324dff6eeb}</Project>
       <Name>QueryFramework.Relational</Name>
@@ -102,9 +99,9 @@
       <Project>{24559ae8-bc4b-4488-b63e-e7cd83b9d3ca}</Project>
       <Name>QueryFramework.SqlServer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\QueryFramework.Relational.Business\QueryFramework.Relational.Business.csproj">
+    <ProjectReference Include="..\QueryFramework.Business\QueryFramework.Business.csproj">
       <Project>{8ac0c51f-78b6-4244-905c-628cd0ac2b81}</Project>
-      <Name>QueryFramework.Relational.Business</Name>
+      <Name>QueryFramework.Business</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

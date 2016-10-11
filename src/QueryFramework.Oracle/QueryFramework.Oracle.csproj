@@ -7,7 +7,7 @@
     <ProjectGuid>{DD6CBB2E-D187-4D7B-8B69-800E9B9256B8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QueryFramework.Oracle</RootNamespace>
+    <RootNamespace>QueryFramework</RootNamespace>
     <AssemblyName>QueryFramework.Oracle</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -56,16 +56,21 @@
     <Compile Include="..\shared\Check.cs">
       <Link>Utilities\Check.cs</Link>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Strings.Designer.cs">
-      <DependentUpon>Strings.resx</DependentUpon>
+    <Compile Include="..\Shared\PropertyInfoExtensions.cs">
+      <Link>Utilities\PropertyInfoExtensions.cs</Link>
     </Compile>
-    <Compile Include="SqlGen\OracleSqlGenerator.cs" />
+    <Compile Include="..\Shared\SharedTypeExtensions.cs">
+      <Link>Utilities\SharedTypeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\OracleStrings.Designer.cs">
+      <DependentUpon>OracleStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Query\Sql\OracleSqlGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Strings.resx">
-      <LogicalName>QueryFramework.Oracle.Strings.resources</LogicalName>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Properties\OracleStrings.resx">
+      <LogicalName>QueryFramework.Oracle.Properties.OracleStrings.resources</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +78,7 @@
       <Link>Properties\Resources.tt</Link>
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.cs</LastGenOutput>
+      <CustomToolNamespace>QueryFramework.Internal</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -81,13 +87,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QueryFramework.Core\QueryFramework.Core.csproj">
-      <Project>{b5b84722-646e-4e8d-9ba6-bc6b165f6d1a}</Project>
-      <Name>Symber.Data.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\QueryFramework.Relational\QueryFramework.Relational.csproj">
       <Project>{59ef6436-6a6a-4bb7-b296-21324dff6eeb}</Project>
       <Name>Symber.Data.Relational</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QueryFramework\QueryFramework.csproj">
+      <Project>{b5b84722-646e-4e8d-9ba6-bc6b165f6d1a}</Project>
+      <Name>QueryFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,40 +1,43 @@
-﻿using QueryFramework.Infrastructure;
-using QueryFramework.Relational.SqlGen;
+﻿// Copyright (c) APQuery.NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+using QueryFramework.Infrastructure;
+using QueryFramework.Query.Sql;
 using QueryFramework.Storage;
 
 namespace QueryFramework.Relational
 {
 
-	public abstract class RelationalDataStoreServices : DataStoreServices, IRelationalDataStoreServices
-	{
+   public abstract class RelationalDataStoreServices : DataStoreServices, IRelationalDataStoreServices
+   {
 
-		#region [ Constructors ]
-
-
-		protected RelationalDataStoreServices(IDataStoreOptions options)
-			: base(options)
-		{
-		}
+      #region [ Constructors ]
 
 
-		#endregion
+      protected RelationalDataStoreServices(IDataStoreOptions options)
+         : base(options)
+      {
+      }
 
 
-		#region [ Properties ]
+      #endregion
 
 
-		public abstract ISqlGenerator SqlGenerator { get; }
+      #region [ Properties ]
 
 
-		public abstract IRelationalConnection RelationalConnection { get; }
+      public abstract ISqlGenerator SqlGenerator { get; }
 
 
-		public override IDataStoreConnection Connection
-			=> RelationalConnection;
+      public abstract IRelationalConnection RelationalConnection { get; }
 
 
-		#endregion
+      public override IDataStoreConnection Connection
+         => RelationalConnection;
 
-	}
+
+      #endregion
+
+   }
 
 }

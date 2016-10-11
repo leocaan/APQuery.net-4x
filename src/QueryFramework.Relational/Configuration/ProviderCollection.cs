@@ -1,87 +1,90 @@
-﻿using System.Collections;
+﻿// Copyright (c) APQuery.NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+using System.Collections;
 using System.Configuration;
 using System.Linq;
 
 namespace QueryFramework.Relational.Configuration
 {
 
-	[ConfigurationCollection(typeof(ProviderElement), CollectionType = ConfigurationElementCollectionType.AddRemoveClearMap)]
-	internal class ProviderCollection : ConfigurationElementCollection
-	{
+   [ConfigurationCollection(typeof(ProviderElement), CollectionType = ConfigurationElementCollectionType.AddRemoveClearMap)]
+   internal class ProviderCollection : ConfigurationElementCollection
+   {
 
-		#region [ Static Fields ]
-
-
-		private static ConfigurationPropertyCollection properties;
+      #region [ Static Fields ]
 
 
-		#endregion
+      private static ConfigurationPropertyCollection properties;
 
 
-		#region [ Constructors ]
+      #endregion
 
 
-		static ProviderCollection()
-		{
-			properties = new ConfigurationPropertyCollection();
-		}
+      #region [ Constructors ]
 
 
-		protected ProviderCollection()
-			: base(new CaseInsensitiveComparer())
-		{
-		}
+      static ProviderCollection()
+      {
+         properties = new ConfigurationPropertyCollection();
+      }
 
 
-		#endregion
+      protected ProviderCollection()
+         : base(new CaseInsensitiveComparer())
+      {
+      }
 
 
-		#region [ Properties ]
+      #endregion
 
 
-		public ProviderElement this[int index]
-		{
-			get { return (ProviderElement)BaseGet(index); }
-			set { if (BaseGet(index) != null) BaseRemoveAt(index); BaseAdd(index, value); }
-		}
+      #region [ Properties ]
 
 
-		public new ProviderElement this[string name]
-		{
-			get { return (ProviderElement)BaseGet(name); }
-		}
+      public ProviderElement this[int index]
+      {
+         get { return (ProviderElement)BaseGet(index); }
+         set { if (BaseGet(index) != null) BaseRemoveAt(index); BaseAdd(index, value); }
+      }
 
 
-		public string[] AllKeys
-			=> BaseGetAllKeys().Cast<string>().ToArray();
+      public new ProviderElement this[string name]
+      {
+         get { return (ProviderElement)BaseGet(name); }
+      }
 
 
-		#endregion
+      public string[] AllKeys
+         => BaseGetAllKeys().Cast<string>().ToArray();
 
 
-		#region [ Override Implementation of ConfigurationElementCollection ]
+      #endregion
 
 
-		protected override ConfigurationElement CreateNewElement()
-		{
-			return new ProviderElement();
-		}
+      #region [ Override Implementation of ConfigurationElementCollection ]
 
 
-		protected override object GetElementKey(ConfigurationElement element)
-		{
-			return ((ProviderElement)element).Name;
-		}
+      protected override ConfigurationElement CreateNewElement()
+      {
+         return new ProviderElement();
+      }
 
 
-		protected override ConfigurationPropertyCollection Properties
-		{
-			get { return properties; }
-		}
+      protected override object GetElementKey(ConfigurationElement element)
+      {
+         return ((ProviderElement)element).Name;
+      }
 
 
-		#endregion
+      protected override ConfigurationPropertyCollection Properties
+      {
+         get { return properties; }
+      }
 
-	}
+
+      #endregion
+
+   }
 
 }

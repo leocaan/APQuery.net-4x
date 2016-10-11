@@ -7,7 +7,7 @@
     <ProjectGuid>{5EE811DE-E2E1-4512-8EDC-D25FA076567C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QueryFramework.Sqlite</RootNamespace>
+    <RootNamespace>QueryFramework</RootNamespace>
     <AssemblyName>QueryFramework.Sqlite</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -57,10 +57,12 @@
       <Link>Utilities\Check.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Strings.Designer.cs">
-      <DependentUpon>Strings.resx</DependentUpon>
+    <Compile Include="Properties\SqliteStrings.Designer.cs">
+      <DependentUpon>SqliteStrings.resx</DependentUpon>
     </Compile>
-    <Compile Include="SqlGen\SqliteSqlGenerator.cs" />
+    <Compile Include="Query\Sql\SqliteSqlGenerator.cs" />
+    <Compile Include="Storage\Internal\SqliteSqlGenerationHelper.cs" />
+    <Compile Include="Storage\Internal\SqliteTypeMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Shared\QueryFramework.snk">
@@ -68,9 +70,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Strings.resx">
-      <LogicalName>QueryFramework.Sqlite.Strings.resources</LogicalName>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Properties\SqliteStrings.resx">
+      <LogicalName>QueryFramework.Sqlite.Properties.SqliteStrings.resources</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -78,19 +79,20 @@
       <Link>Properties\Resources.tt</Link>
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.cs</LastGenOutput>
+      <CustomToolNamespace>QueryFramework.Internal</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QueryFramework.Core\QueryFramework.Core.csproj">
-      <Project>{b5b84722-646e-4e8d-9ba6-bc6b165f6d1a}</Project>
-      <Name>Symber.Data.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\QueryFramework.Relational\QueryFramework.Relational.csproj">
       <Project>{59ef6436-6a6a-4bb7-b296-21324dff6eeb}</Project>
       <Name>Symber.Data.Relational</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QueryFramework\QueryFramework.csproj">
+      <Project>{b5b84722-646e-4e8d-9ba6-bc6b165f6d1a}</Project>
+      <Name>QueryFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,70 +1,58 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using QueryFramework.Relational.Query;
-using QueryFramework.Relational.SqlSyntex;
-using QueryFramework.Relational.Business.DbDef;
+﻿#if Test_SqlSyntex
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using QueryFramework.Business.DbDef;
+using QueryFramework.Query;
+using QueryFramework.Query.SqlSyntex;
 
 namespace QueryFramework.Tests.Query
 {
-	[TestClass]
-	public class Select_GroupByClause_Test
-	{
 
-		[TestMethod]
-		public virtual void Groupable_Expr()
-		{
-			var t = CrmDbDef.department;
+   [TestClass]
+   public class Select_GroupByClause_Test
+   {
 
-			APQuery
-				.select(t.DepartmentId, t.DepartmentName)
-				.from(t)
-				.group_by(t.DepartmentId, t.DepartmentName)
-				.print("GROUP BY table_source.column_name");
-		}
+      [TestMethod]
+      public virtual void Groupby_and_Having()
+      {
+         var t = CrmDbDef.department;
 
-		[TestMethod]
-		public virtual void Groupable_Expr_having()
-		{
-			var t = CrmDbDef.department;
-
-			APQuery
-				.select(t.DepartmentId, t.DepartmentName)
-				.from(t)
-				.group_by(t.DepartmentId, t.DepartmentName)
-				.having(t.DepartmentId == 0)
-				.print("GROUP BY table_source.column_name HAVING table_source.column_name = @param");
-		}
-
-		[TestMethod]
-		public virtual void Grouping_Func()
-		{
-			var t = CrmDbDef.department;
+         APQuery
+            .select(t.DepartmentId, t.DepartmentName)
+            .from(t)
+            .group_by(t.DepartmentId, t.DepartmentName)
+            .print("GROUP BY ...");
 
 
-			// Rollup
+         APQuery
+            .select(t.DepartmentId, t.DepartmentName)
+            .from(t)
+            .group_by(t.DepartmentId, t.DepartmentName)
+            .having(t.DepartmentId == 0)
+            .print("GROUP BY ... HAVING ...");
 
-			APQuery
-				.select(t.DepartmentId, t.DepartmentName)
-				.from(t)
-				.group_by(t.ParentId, SqlExpr.Rollup(t.DepartmentId, t.DepartmentName))
-				.print("GROUP BY table_source.column_name, ROLLUP (...)");
 
-			// Cube
+         APQuery
+            .select(t.DepartmentId, t.DepartmentName)
+            .from(t)
+            .group_by(t.ParentId, SqlExpr.Rollup(t.DepartmentId, t.DepartmentName))
+            .print("GROUP BY ..., ROLLUP (...)");
 
-			APQuery
-				.select(t.DepartmentId, t.DepartmentName)
-				.from(t)
-				.group_by(t.ParentId, SqlExpr.Cube(t.DepartmentId, t.DepartmentName))
-				.print("GROUP BY table_source.column_name, CUBE (...)");
 
-			// Grouping sets
+         APQuery
+            .select(t.DepartmentId, t.DepartmentName)
+            .from(t)
+            .group_by(t.ParentId, SqlExpr.Cube(t.DepartmentId, t.DepartmentName))
+            .print("GROUP BY ..., CUBE (...)");
 
-			APQuery
-				.select(t.DepartmentId, t.DepartmentName)
-				.from(t)
-				.group_by(t.ParentId, SqlExpr.GroupingSets(t.DepartmentId, t.DepartmentName))
-				.print("GROUP BY table_source.column_name, GROUPING SETS (...)");
 
-		}
+         APQuery
+            .select(t.DepartmentId, t.DepartmentName)
+            .from(t)
+            .group_by(t.ParentId, SqlExpr.GroupingSets(t.DepartmentId, t.DepartmentName))
+            .print("GROUP BY ..., GROUPING SETS (...)");
+      }
 
-	}
+   }
+
 }
+#endif

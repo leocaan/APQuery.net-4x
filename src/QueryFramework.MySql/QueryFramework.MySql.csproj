@@ -7,7 +7,7 @@
     <ProjectGuid>{FDA4816E-1208-4F28-AEEF-1D1C2094CF84}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QueryFramework.MySql</RootNamespace>
+    <RootNamespace>QueryFramework</RootNamespace>
     <AssemblyName>QueryFramework.MySql</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -56,16 +56,24 @@
     <Compile Include="..\shared\Check.cs">
       <Link>Utilities\Check.cs</Link>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Strings.Designer.cs">
-      <DependentUpon>Strings.resx</DependentUpon>
+    <Compile Include="..\Shared\PropertyInfoExtensions.cs">
+      <Link>Utilities\PropertyInfoExtensions.cs</Link>
     </Compile>
-    <Compile Include="SqlGen\MySqlSqlGenerator.cs" />
+    <Compile Include="..\Shared\SharedTypeExtensions.cs">
+      <Link>Utilities\SharedTypeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\MySqlStrings.Designer.cs">
+      <DependentUpon>MySqlStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Query\Sql\MySqlSqlGenerator.cs" />
+    <Compile Include="Storage\Internal\MySqlMaxLengthMapping.cs" />
+    <Compile Include="Storage\Internal\MySqlTypeMapper.cs" />
+    <Compile Include="Storage\Internal\MySqlSqlGenerationHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Strings.resx">
-      <LogicalName>QueryFramework.MySql.Strings.resources</LogicalName>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Properties\MySqlStrings.resx">
+      <LogicalName>QueryFramework.MySql.Properties.MySqlStrings.resources</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +81,7 @@
       <Link>Properties\Resources.tt</Link>
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.cs</LastGenOutput>
+      <CustomToolNamespace>QueryFramework.Internal</CustomToolNamespace>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -84,15 +93,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QueryFramework.Core\QueryFramework.Core.csproj">
-      <Project>{b5b84722-646e-4e8d-9ba6-bc6b165f6d1a}</Project>
-      <Name>Symber.Data.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\QueryFramework.Relational\QueryFramework.Relational.csproj">
       <Project>{59ef6436-6a6a-4bb7-b296-21324dff6eeb}</Project>
       <Name>Symber.Data.Relational</Name>
     </ProjectReference>
+    <ProjectReference Include="..\QueryFramework\QueryFramework.csproj">
+      <Project>{b5b84722-646e-4e8d-9ba6-bc6b165f6d1a}</Project>
+      <Name>QueryFramework</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

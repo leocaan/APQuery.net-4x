@@ -7,7 +7,7 @@
     <ProjectGuid>{59EF6436-6A6A-4BB7-B296-21324DFF6EEB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QueryFramework.Relational</RootNamespace>
+    <RootNamespace>QueryFramework</RootNamespace>
     <AssemblyName>QueryFramework.Relational</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,8 +55,17 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Properties\RelationalStrings.Designer.cs">
+      <DependentUpon>RelationalStrings.resx</DependentUpon>
+    </Compile>
     <Compile Include="..\Shared\Check.cs">
       <Link>Utilities\Check.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\PropertyInfoExtensions.cs">
+      <Link>Utilities\PropertyInfoExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\SharedTypeExtensions.cs">
+      <Link>Utilities\SharedTypeExtensions.cs</Link>
     </Compile>
     <Compile Include="Configuration\QueryFrameworkSection.cs" />
     <Compile Include="Configuration\PropertyHelper.cs" />
@@ -84,113 +94,125 @@
     <Compile Include="DBStruct\TableDef.cs" />
     <Compile Include="DBStruct\TimeSpanColumnDef.cs" />
     <Compile Include="IRelationalDataStoreServices.cs" />
+    <Compile Include="Query\SqlSyntex\Function\SqlRowNumberExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlAliasReference.cs" />
+    <Compile Include="Query\SqlSyntex\SqlBinaryExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlBinaryOperator.cs" />
+    <Compile Include="Query\SqlSyntex\SqlExplicitCastExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlLateralJoinExpr.cs" />
+    <Compile Include="Storage\ByteArrayRelationalTypeMapper.cs" />
+    <Compile Include="Storage\IByteArrayRelationalTypeMapper.cs" />
+    <Compile Include="Storage\Internal\DynamicRelationalParameter.cs" />
+    <Compile Include="Storage\Internal\RelationalCommand.cs" />
+    <Compile Include="Storage\Internal\RelationalCommandBuilder.cs" />
+    <Compile Include="Storage\Internal\RelationalCommandBuilderFactory.cs" />
+    <Compile Include="Storage\Internal\RelationalParameterBuilder.cs" />
+    <Compile Include="Storage\IQuerySourceAliasGeneratorFactory.cs" />
+    <Compile Include="Storage\IParameterNameGeneratorFactory.cs" />
+    <Compile Include="Storage\IRelationalCommand.cs" />
+    <Compile Include="Storage\IRelationalCommandBuilder.cs" />
+    <Compile Include="Storage\IRelationalCommandBuilderFactory.cs" />
+    <Compile Include="Storage\IRelationalParameter.cs" />
+    <Compile Include="Storage\IRelationalParameterBuilder.cs" />
+    <Compile Include="Storage\IRelationalTypeMapper.cs" />
+    <Compile Include="Storage\ISqlGenerationHelper.cs" />
+    <Compile Include="Storage\IStringRelationalTypeMapper.cs" />
+    <Compile Include="Storage\QuerySourceAliasGeneratorFactory.cs" />
+    <Compile Include="Storage\ParameterNameGeneratorFactory.cs" />
+    <Compile Include="Storage\RelationalCommandBuilderExtensions.cs" />
+    <Compile Include="Storage\RelationalSqlGenerationHelper.cs" />
+    <Compile Include="Storage\RelationalTypeMapper.cs" />
+    <Compile Include="Storage\RelationalTypeMapperExtensions.cs" />
+    <Compile Include="Storage\RelationalTypeMapping.cs" />
+    <Compile Include="Storage\StringRelationalTypeMapper.cs" />
+    <Compile Include="wait\ISqlStatementExecutor.cs" />
     <Compile Include="RelationalConnection.cs" />
     <Compile Include="RelationalOptionsExtension.cs" />
     <Compile Include="RelationalOptionsBuilder.cs" />
+    <Compile Include="Query\Sql\ISqlExprVisitor.cs" />
+    <Compile Include="wait\CommandBuilder.cs" />
+    <Compile Include="wait\SqlStatementExecutor.cs" />
     <Compile Include="Storage\DataStoreProvider.cs" />
     <Compile Include="Storage\DataStoreProviderFactory.cs" />
     <Compile Include="RelationalDataStoreServices.cs" />
     <Compile Include="Storage\DataStoreServicesManager.cs" />
-    <Compile Include="RelationalTranscation.cs" />
+    <Compile Include="RelationalTransaction.cs" />
     <Compile Include="IRelationalConnection.cs" />
     <Compile Include="Query\APQuery.cs" />
     <Compile Include="Query\SqlQuerySourceExprExtensions.cs" />
     <Compile Include="Query\SqlSelectExprExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Strings.Designer.cs">
-      <DependentUpon>Strings.resx</DependentUpon>
-    </Compile>
-    <Compile Include="SqlGen\CommandParameter.cs" />
-    <Compile Include="SqlGen\DefaultSqlGenerator.cs" />
-    <Compile Include="SqlGen\ISqlGenerator.cs" />
-    <Compile Include="SqlGen\SqlParameterNameGenerator.cs" />
-    <Compile Include="SqlGen\SqlTableAliasGenerator.cs" />
-    <Compile Include="SqlSyntex\Command\SqlDeleteCommand.cs" />
-    <Compile Include="SqlSyntex\Command\SqlInsertCommand.cs" />
-    <Compile Include="SqlSyntex\Command\SqlModificationCommand.cs" />
-    <Compile Include="SqlSyntex\Command\SqlUpdateCommand.cs" />
-    <Compile Include="SqlSyntex\Function\SqlCountExpr.cs" />
-    <Compile Include="SqlSyntex\Function\SqlMaxExpr.cs" />
-    <Compile Include="SqlSyntex\Function\SqlMinExpr.cs" />
-    <Compile Include="SqlSyntex\Function\SqlSumExpr.cs" />
-    <Compile Include="SqlSyntex\Function\SqlAvgExpr.cs" />
-    <Compile Include="SqlSyntex\ISqlAssignableExpr.cs" />
-    <Compile Include="SqlSyntex\SqlDistinctableFunctionExpr.cs" />
-    <Compile Include="SqlSyntex\SqlFunctionExprBase.cs" />
-    <Compile Include="SqlSyntex\SqlGroupableExpr.cs" />
-    <Compile Include="SqlSyntex\SqlOperableExpr.cs" />
-    <Compile Include="SqlSyntex\SqlProjectableExpr.cs" />
-    <Compile Include="SqlSyntex\Function\SqlDenseRankExpr.cs" />
-    <Compile Include="SqlSyntex\SqlCombineResultExprBase.cs" />
-    <Compile Include="SqlSyntex\SqlExceptExpr.cs" />
-    <Compile Include="SqlSyntex\Function\SqlNtileExpr.cs" />
-    <Compile Include="SqlSyntex\SqlIntersectExpr.cs" />
-    <Compile Include="SqlSyntex\SqlUnionExpr.cs" />
-    <Compile Include="SqlSyntex\Function\SqlRankExpr.cs" />
-    <Compile Include="SqlSyntex\Function\SqlRowNumberExpr.cs" />
-    <Compile Include="SqlSyntex\SqlOverExpr.cs" />
-    <Compile Include="SqlSyntex\SqlRawSqlExpr.cs" />
-    <Compile Include="SqlSyntex\SqlAllExpr.cs" />
-    <Compile Include="SqlSyntex\SqlAndExpr.cs" />
-    <Compile Include="SqlSyntex\SqlAnyExpr.cs" />
-    <Compile Include="SqlSyntex\SqlBetweenExpr.cs" />
-    <Compile Include="SqlSyntex\SqlAliasExpr.cs" />
-    <Compile Include="SqlSyntex\SqlComparisonSubQueryExpr.cs" />
-    <Compile Include="SqlSyntex\SqlLiteralExpr.cs" />
-    <Compile Include="SqlSyntex\SqlConstantExpr.cs" />
-    <Compile Include="SqlSyntex\SqlParameterExpr.cs" />
-    <Compile Include="SqlSyntex\SqlProjectStarExpr.cs" />
-    <Compile Include="SqlSyntex\SqlColumnExpr.cs" />
-    <Compile Include="SqlSyntex\SqlComparisonExpr.cs" />
-    <Compile Include="SqlSyntex\SqlComparisonOperator.cs" />
-    <Compile Include="SqlSyntex\SqlCrossJoinExpr.cs" />
-    <Compile Include="SqlSyntex\SqlCubeExpr.cs" />
-    <Compile Include="SqlSyntex\SqlExistsExpr.cs" />
-    <Compile Include="SqlSyntex\SqlExpr.cs" />
-    <Compile Include="SqlSyntex\SqlFullOuterJoinExpr.cs" />
-    <Compile Include="SqlSyntex\SqlMultipleGroupingSetsExprBase.cs" />
-    <Compile Include="SqlSyntex\SqlGroupingSetsExpr.cs" />
-    <Compile Include="SqlSyntex\SqlInExpr.cs" />
-    <Compile Include="SqlSyntex\SqlInnerJoinExpr.cs" />
-    <Compile Include="SqlSyntex\SqlInSubQueryExpr.cs" />
-    <Compile Include="SqlSyntex\SqlIsNullExpr.cs" />
-    <Compile Include="SqlSyntex\SqlJoinExprBase.cs" />
-    <Compile Include="SqlSyntex\SqlLeftOuterJoinExpr.cs" />
-    <Compile Include="SqlSyntex\SqlLikeExpr.cs" />
-    <Compile Include="SqlSyntex\SqlNotExpr.cs" />
-    <Compile Include="SqlSyntex\SqlOrderingDirection.cs" />
-    <Compile Include="SqlSyntex\SqlOrderingExpr.cs" />
-    <Compile Include="SqlSyntex\SqlOrExpr.cs" />
-    <Compile Include="SqlSyntex\SqlPredicateExpr.cs" />
-    <Compile Include="SqlSyntex\SqlQuerySourceExpr.cs" />
-    <Compile Include="SqlSyntex\SqlRightOuterJoinExpr.cs" />
-    <Compile Include="SqlSyntex\SqlRollupExpr.cs" />
-    <Compile Include="SqlSyntex\SqlSelectExpr.cs" />
-    <Compile Include="SqlSyntex\SqlScalarSubQueryExpr.cs" />
-    <Compile Include="SqlSyntex\SqlTableExpr.cs" />
-    <Compile Include="SqlSyntex\ISqlQuerySource.cs" />
-    <Compile Include="Storage\Test.cs" />
+    <Compile Include="Query\Sql\DefaultSqlGenerator.cs" />
+    <Compile Include="Query\Sql\ISqlGenerator.cs" />
+    <Compile Include="Storage\ParameterNameGenerator.cs" />
+    <Compile Include="Storage\QuerySourceAliasGenerator.cs" />
+    <Compile Include="Query\SqlSyntex\Command\SqlDeleteCommand.cs" />
+    <Compile Include="Query\SqlSyntex\Command\SqlInsertCommand.cs" />
+    <Compile Include="Query\SqlSyntex\Command\SqlModificationCommand.cs" />
+    <Compile Include="Query\SqlSyntex\Command\SqlUpdateCommand.cs" />
+    <Compile Include="Query\SqlSyntex\Function\SqlCountExpr.cs" />
+    <Compile Include="Query\SqlSyntex\Function\SqlMaxExpr.cs" />
+    <Compile Include="Query\SqlSyntex\Function\SqlMinExpr.cs" />
+    <Compile Include="Query\SqlSyntex\Function\SqlSumExpr.cs" />
+    <Compile Include="Query\SqlSyntex\Function\SqlAvgExpr.cs" />
+    <Compile Include="Query\SqlSyntex\ISqlAssignableExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlDistinctableFunctionExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlFunctionExprBase.cs" />
+    <Compile Include="Query\SqlSyntex\SqlGroupableExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlOperableExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlProjectableExpr.cs" />
+    <Compile Include="Query\SqlSyntex\Function\SqlDenseRankExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlCombineResultExprBase.cs" />
+    <Compile Include="Query\SqlSyntex\SqlExceptExpr.cs" />
+    <Compile Include="Query\SqlSyntex\Function\SqlNtileExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlIntersectExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlUnionExpr.cs" />
+    <Compile Include="Query\SqlSyntex\Function\SqlRankExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlOverExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlRawSqlExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlAllExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlAndExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlAnyExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlBetweenExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlAliasExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlComparisonSubQueryExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlConstantExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlParameterExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlProjectStarExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlColumnExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlComparisonExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlComparisonOperator.cs" />
+    <Compile Include="Query\SqlSyntex\SqlCrossJoinExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlCubeExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlExistsExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlFullOuterJoinExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlMultipleGroupingSetsExprBase.cs" />
+    <Compile Include="Query\SqlSyntex\SqlGroupingSetsExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlInExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlInnerJoinExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlInSubQueryExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlIsNullExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlJoinExprBase.cs" />
+    <Compile Include="Query\SqlSyntex\SqlLeftOuterJoinExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlLikeExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlNotExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlOrderingDirection.cs" />
+    <Compile Include="Query\SqlSyntex\SqlOrderingExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlOrExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlPredicateExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlQuerySourceExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlRightOuterJoinExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlRollupExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlSelectExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlScalarSubQueryExpr.cs" />
+    <Compile Include="Query\SqlSyntex\SqlTableExpr.cs" />
+    <Compile Include="Query\SqlSyntex\ISqlQuerySource.cs" />
     <Compile Include="Utilities\MemberInfoExtensions.cs" />
-    <Compile Include="Utilities\PropertyInfoExtensions.cs" />
-    <Compile Include="Utilities\TypeExtensions.cs" />
     <Compile Include="Utilities\TypeLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Strings.resx">
-      <LogicalName>QueryFramework.Strings.resources</LogicalName>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\tools\Resources.tt">
-      <Link>Properties\Resources.tt</Link>
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Resources.cs</LastGenOutput>
-    </Content>
-    <Content Include="Todo.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Shared\QueryFramework.snk">
@@ -198,12 +220,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="NewFolder1\" />
+    <EmbeddedResource Include="Properties\RelationalStrings.resx">
+      <LogicalName>QueryFramework.Relational.Properties.RelationalStrings.resources</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QueryFramework.Core\QueryFramework.Core.csproj">
+    <Content Include="..\..\tools\Resources.tt">
+      <Link>Properties\Resources.tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Resources.cs</LastGenOutput>
+      <CustomToolNamespace>QueryFramework.Internal</CustomToolNamespace>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QueryFramework\QueryFramework.csproj">
       <Project>{b5b84722-646e-4e8d-9ba6-bc6b165f6d1a}</Project>
-      <Name>Symber.Data.Core</Name>
+      <Name>QueryFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

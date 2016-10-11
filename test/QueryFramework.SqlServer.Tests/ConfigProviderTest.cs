@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using QueryFramework.Relational.Storage;
+using QueryFramework.Relational;
 
 namespace QueryFramework.SqlServer.Tests
 {
@@ -20,11 +20,32 @@ namespace QueryFramework.SqlServer.Tests
 
 			//var services = new SqlServerDataStoreServices(builder.Options);
 			//var conn = services.RelationalConnection;
-
-
-			StorageTest.TestServices();
 		}
 
-	}
+
+	//[TestMethod]
+	//public static void TestServices()
+	//{
+	//	var services = DataStoreServicesManager.CreateServices();
+
+	//	var conn = services.RelationalConnection;
+	//	var cmd = conn.DbConnection.CreateCommand();
+	//	cmd.CommandText = "select * from department";
+	//	conn.Open();
+
+
+
+	//	using (var r = cmd.ExecuteReader())
+	//	{
+	//		while (r.Read())
+	//		{
+	//			object[] os = new object[10];
+	//			r.GetValues(os);
+	//		}
+	//	}
+
+	//}
+
+}
 
 }

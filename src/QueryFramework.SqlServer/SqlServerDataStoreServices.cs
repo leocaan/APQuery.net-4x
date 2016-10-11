@@ -1,6 +1,6 @@
 ﻿using QueryFramework.Infrastructure;
+using QueryFramework.Query.Sql;
 using QueryFramework.Relational;
-using QueryFramework.Relational.SqlGen;
 
 namespace QueryFramework.SqlServer
 {
@@ -34,7 +34,7 @@ namespace QueryFramework.SqlServer
 
 
 		public override ISqlGenerator SqlGenerator
-			=> new SqlServerSqlGenerator();
+			=> new SqlServerSqlGenerator(null, null, null, null, null); // todo
 
 
 		public override IRelationalConnection RelationalConnection

@@ -1,1 +1,13 @@
 ﻿QuerySizeOf 时，带分组条件的处理
+
+     public override void AddToQueryGroupPhrases(List<APSqlExprPhrase> phrases)
+      {
+         base.AddToQueryGroupPhrases(phrases);
+         RelationShowColumn.AddToQueryGroupPhrases(phrases);
+      }
+LookupColumn 加上  RelationShowColumn.AddToQueryGroupPhrases
+
+
+2、日期column可以读取null
+
+aquery.query(..) 可以返回数据，增加一个.read(..) 不返回数据的操作

@@ -1,115 +1,88 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using QueryFramework.Relational.Query;
-using QueryFramework.Relational.SqlSyntex;
-using QueryFramework.Relational.Business.DbDef;
+﻿#if Test_SqlSyntex
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using QueryFramework.Business.DbDef;
+using QueryFramework.Query;
+using QueryFramework.Query.SqlSyntex;
 
 namespace QueryFramework.Tests.Query
 {
-	[TestClass]
-	public class Select_FromClause_Test
-	{
 
-		[TestMethod]
-		public virtual void Table_Expr()
-		{
-			var t = CrmDbDef.department;
+   [TestClass]
+   public class Select_FromClause_Test
+   {
 
-			APQuery
-				.select(t.DepartmentId, t.ParentId, t.DepartmentName, t.CreateDate, t.CancelDate, t.State)
-				.from(t)
-				.print("FROM table_name AS table_alias");
-		}
+      [TestMethod]
+      public virtual void Table_Alias()
+      {
+         var t = CrmDbDef.department;
 
 
-		[TestMethod]
-		public virtual void Table_Expr_Alias()
-		{
-			var t = CrmDbDef.department.As<DepartmentTableDef>("t2");
-
-			APQuery
-				.select(t.DepartmentId, t.ParentId, t.DepartmentName, t.CreateDate, t.CancelDate, t.State)
-					.from(t)
-					.print("FROM table_name AS table_alias");
-		}
+         APQuery
+            .select(t.DepartmentId, t.ParentId)
+            .from(t)
+            .print("Auto generate table alias name");
 
 
-		[TestMethod]
-		public virtual void InnerJoin_Expr()
-		{
-			var t = CrmDbDef.department;
-			var e = CrmDbDef.employee;
-
-			APQuery
-				.select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
-				.from(t, e.InnerJoin(t.DepartmentId == e.DepartmentId))
-				.print("<table_source> INNER JOIN <table_source> ON <search_condition>");
-		}
+         var t2 = CrmDbDef.department.As<DepartmentTableDef>("t2");
+         APQuery
+            .select(t2.DepartmentId, t2.ParentId)
+               .from(t2)
+               .print("Focus generate table alias name");
+      }
 
 
-		[TestMethod]
-		public virtual void LeftJoin_Expr()
-		{
-			var t = CrmDbDef.department;
-			var e = CrmDbDef.employee;
-
-			APQuery
-				.select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
-				.from(t)
-				.leftJoin(e, t.DepartmentId == e.DepartmentId)
-				.print("<table_source> LEFT JOIN <table_source> ON <search_condition>");
-		}
+      [TestMethod]
+      public virtual void Join_Expr()
+      {
+         var t = CrmDbDef.department;
+         var e = CrmDbDef.employee;
 
 
-		[TestMethod]
-		public virtual void RightJoin_Expr()
-		{
-			var t = CrmDbDef.department;
-			var e = CrmDbDef.employee;
-
-			APQuery
-				.select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
-				.from(t, e.RightJoin(t.DepartmentId == e.DepartmentId))
-				.print("<table_source> RIGHT JOIN <table_source> ON <search_condition>");
-		}
+         APQuery
+            .select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
+            .from(t)
+            .innerJoin(e, t.DepartmentId == e.DepartmentId)
+            .print("... INNER JOIN ...");
 
 
-		[TestMethod]
-		public virtual void FullJoin_Expr()
-		{
-			var t = CrmDbDef.department;
-			var e = CrmDbDef.employee;
-
-			APQuery
-				.select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
-				.from(t, e.FullJoin(t.DepartmentId == e.DepartmentId))
-				.print("<table_source> FULL JOIN <table_source> ON <search_condition>");
-		}
+         APQuery
+            .select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
+            .from(t)
+            .leftJoin(e, t.DepartmentId == e.DepartmentId)
+            .print("... LEFT JOIN ...");
 
 
-		[TestMethod]
-		public virtual void CrossJoin_Expr()
-		{
-			var t = CrmDbDef.department;
-			var e = CrmDbDef.employee;
-
-			APQuery
-				.select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
-				.from(t, e.CrossJoin())
-				.print("<table_source> CROSS JOIN <table_source>");
-		}
+         APQuery
+           .select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
+           .from(t)
+           .rightJoin(e, t.DepartmentId == e.DepartmentId)
+           .print("... RIGHT JOIN ...");
 
 
-		[TestMethod]
-		public virtual void Self_Join()
-		{
-			var t = CrmDbDef.department;
-			var t1 = t.As<DepartmentTableDef>("dp");
+         APQuery
+            .select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
+            .from(t)
+            .fullJoin(e, t.DepartmentId == e.DepartmentId)
+            .print("... FULL JOIN ...");
 
-			APQuery
-				.select(t.DepartmentId, t.DepartmentName, t1.DepartmentName)
-				.from(t, t1.InnerJoin(t.ParentId == t1.DepartmentId))
-				.print("<table_source> INNER JOIN <table_source> ON <search_condition>");
-		}
 
-	}
+         APQuery
+            .select(e.EmployeeId, t.DepartmentName, e.Firstname, e.Lastname, e.Birthday, e.State)
+            .from(t)
+            .lateralJoin(e)
+            .print("... CROSS JOIN LATERAL or CROSS APPLY ...");
+
+
+         var t1 = t.As<DepartmentTableDef>("dp");
+
+         APQuery
+            .select(t.DepartmentId, t.DepartmentName, t1.DepartmentName)
+            .from(t)
+            .innerJoin(t1, t.ParentId == t1.DepartmentId)
+            .print("Self join with table alias");
+      }
+
+   }
+
 }
+#endif
